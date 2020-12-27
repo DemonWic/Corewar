@@ -209,3 +209,8 @@ CMakeFiles/corewar.dir/main.c.o: ../includes/libft.h
 CMakeFiles/corewar.dir/main.c.o: ../includes/op.h
 CMakeFiles/corewar.dir/main.c.o: ../main.c
 
+CMakeFiles/corewar.dir/op.c.o: ../includes/corewar.h
+CMakeFiles/corewar.dir/op.c.o: ../includes/libft.h
+CMakeFiles/corewar.dir/op.c.o: ../includes/op.h
+CMakeFiles/corewar.dir/op.c.o: ../op.c
+

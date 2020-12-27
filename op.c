@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
+//#include "op.h"
 #include "corewar.h"
 typedef struct s_op
 {
@@ -50,3 +50,77 @@ t_op    op_tab[17] =
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
 };
+
+
+
+int *get_types_arg(t_cursor *cursor, unsigned char *arena)
+{
+    int tab[3];
+    int op_code;
+    int arg_code;
+    int i;
+
+    i = -1;
+    op_code = arena[cursor->position];
+    if (op_tab[op_code].code_arg == 0)
+        return (tab);
+    else
+    {
+        arg_code = arena[cursor->position + 1];
+        while (++i < 3)
+            tab[i] = (arg_code & (192 >> (i * 2))) >> (6 - (i * 2));
+    }
+    return (tab);
+}
+
+int    get_byte_to_do(t_cursor *cursor, unsigned char *arena)
+{
+    int op_code;
+    int arg_code;
+    int i;
+    int res;
+    int tab[3];
+
+    i = -1;
+    res = 1;
+    op_code = arena[cursor->position];
+    if (op_tab[op_code].code_arg == 0)  // значит кода аргументов нет
+    {
+        while (++i < 3)
+        {
+            if (op_tab[op_code].arg_types[i] & T_IND)
+                res += T_IND;
+            else if (op_tab[op_code].arg_types[i] & T_REG)
+                res += T_REG;
+            else if (op_tab[op_code].arg_types[i] & T_DIR)
+            {
+                if (op_tab[op_code].dir_size == 0)
+                    res += T_IND;
+                else if (op_tab[op_code].dir_size == 1)
+                    res += T_DIR;
+            }
+        }
+    }
+    else
+    {
+        res++;
+        arg_code = arena[cursor->position + 1];
+        while (++i < 3)
+        {
+            tab[i] = (arg_code & (192 >> (i * 2))) >> (6 - (i * 2));
+            if (tab[i] & 1)
+                res += T_REG;
+            else if (tab[i] & 2)
+            {
+                if (op_tab[op_code].dir_size == 0)
+                    res += T_IND;
+                else if (op_tab[op_code].dir_size == 1)
+                    res += T_DIR;
+            }
+            else if (tab[i] & 3)
+                res += T_DIR;
+        }
+        // 192 - 1 48 - 2 12 - 3
+    }
+    return (res);
+}

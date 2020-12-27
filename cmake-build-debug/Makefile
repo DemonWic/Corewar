@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ahintz/CLionProjects/corewar
+CMAKE_SOURCE_DIR = /Users/ahintz/CLionProjects/Corewar2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ahintz/CLionProjects/corewar/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ahintz/CLionProjects/Corewar2/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ahintz/CLionProjects/corewar/cmake-build-debug/CMakeFiles /Users/ahintz/CLionProjects/corewar/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles /Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ahintz/CLionProjects/corewar/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1959,6 +1959,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main.c.s
 .PHONY : main.c.s
 
+op.o: op.c.o
+
+.PHONY : op.o
+
+# target to build an object file
+op.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op.c.o
+.PHONY : op.c.o
+
+op.i: op.c.i
+
+.PHONY : op.i
+
+# target to preprocess a source file
+op.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op.c.i
+.PHONY : op.c.i
+
+op.s: op.c.s
+
+.PHONY : op.s
+
+# target to generate assembly for a file
+op.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op.c.s
+.PHONY : op.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2172,6 +2199,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... op.o"
+	@echo "... op.i"
+	@echo "... op.s"
 .PHONY : help
 
 

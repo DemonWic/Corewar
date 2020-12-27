@@ -74,4 +74,4 @@ add_executable(corewar libft/ft_atoi.c
         includes/lemin.h
         includes/libft.h
         includes/op.h
-        includes/corewar.h main.c functions.c flag_d.c)
+        includes/corewar.h main.c functions.c flag_d.c op.c)

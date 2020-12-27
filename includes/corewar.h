@@ -74,6 +74,7 @@ void error_invalid_head(t_init *data, int num);
 int check_errors(t_init *data, int num);
 void	*ft_unmemcpy(void *dst, const void *src, size_t n);
 void	print_buf(unsigned char *buf);
+int    get_byte_to_do(t_cursor *cursor, unsigned char *arena);
 
 #endif //COREWAR_COREWAR_H
 
