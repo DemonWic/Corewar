@@ -204,7 +204,7 @@ int add_cursor(t_init *data, int champ, int arena_id)
     new->position = arena_id;
     new->regs[1] = - data->champs[champ]->num;
     new->next = NULL;
-    new->byte_to_next_op = get_byte_to_do(new, data->arena);
+//    new->byte_to_next_op = get_byte_to_do(new, data->arena);
     if (data->cursors == NULL)
         data->cursors = new;
     else
@@ -263,6 +263,7 @@ int main(int argc, char **argv) {
         return(1);
     }
 
+    // запись кодов игроков на арену, создание кареток
     sort_champs(data);
     int delta;
     int id;
@@ -280,23 +281,23 @@ int main(int argc, char **argv) {
         }
         i++;
     }
-//    print_buf(data->arena);
-//    i = 0;
-//    while (i < 17)
-//    {
-//        printf("name = %s arg_num = %i code = %i cycles = %i des = %s code_arg = %i dir_size = %i\n", op_tab[i].name, op_tab[i].arg_num, op_tab[i].code, op_tab[i].cycles_to_do, op_tab[i].des, op_tab[i].code_arg, op_tab[i].dir_size);
-////        printf("arg_types = %i  %i  %i\n", op_tab[i].arg_types[0], op_tab[i].arg_types[1], op_tab[i].arg_types[2]);
-//        i++;
-//    }
-//    i = 0;
-//    while (i < data->pl_count)
-//    {
-//        printf("Name: \"%s\"  comment: \"%s\" num: %i size: %i code:", data->champs[i]->name, data->champs[i]->comment, data->champs[i]->num, data->champs[i]->size);
-//        if (data->champs[i]->code != NULL)
-//            printf("yes\n");
-//        else
-//            printf("no\n");
-//        i++;
-//    }
+    i = 0;
+    int run;
+    run = 1;
+    while(run)
+    {
+        while (data->cursors)
+        {
+
+        }
+        if (data->flag_dump && data->flag_dump == i)
+        {
+            print_buf(data->arena);
+            data_free(data);
+            run = 0;
+        }
+        i++;
+    }
+
     return 0;
 }
