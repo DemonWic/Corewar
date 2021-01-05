@@ -15,22 +15,28 @@
 
 
 
-int *get_types_arg(t_cursor *cursor, unsigned char *arena)
+
+char *get_types_arg(t_cursor *cursor, unsigned char *arena)
 {
-    int tab[3];
-    int op_code;
+//    int tab[3];
+    char *tab;
     int arg_code;
+    int buf;
     int i;
 
     i = -1;
-    op_code = arena[cursor->position];
-    if (op_tab[op_code].code_arg == 0)
+    cursor->op_code = arena[cursor->position];
+    tab = (char *)ft_memalloc(sizeof(char) * 3);
+    if (g_op_tab[cursor->op_code].code_arg == 0)
         return (tab);
     else
     {
         arg_code = arena[cursor->position + 1];
         while (++i < 3)
+        {
             tab[i] = (arg_code & (192 >> (i * 2))) >> (6 - (i * 2));
+            buf = tab[i];
+        }
     }
     return (tab);
 }
@@ -46,19 +52,19 @@ int    get_byte_to_do(t_cursor *cursor, unsigned char *arena)
     i = -1;
     res = 1;
     op_code = arena[cursor->position];
-    if (op_tab[op_code].code_arg == 0)  // значит кода аргументов нет
+    if (g_op_tab[op_code].code_arg == 0)  // значит кода аргументов нет
     {
         while (++i < 3)
         {
-            if (op_tab[op_code].arg_types[i] & T_IND)
+            if (g_op_tab[op_code].arg_types[i] & T_IND)
                 res += T_IND;
-            else if (op_tab[op_code].arg_types[i] & T_REG)
+            else if (g_op_tab[op_code].arg_types[i] & T_REG)
                 res += T_REG;
-            else if (op_tab[op_code].arg_types[i] & T_DIR)
+            else if (g_op_tab[op_code].arg_types[i] & T_DIR)
             {
-                if (op_tab[op_code].dir_size == 0)
+                if (g_op_tab[op_code].dir_size == 0)
                     res += T_IND;
-                else if (op_tab[op_code].dir_size == 1)
+                else if (g_op_tab[op_code].dir_size == 1)
                     res += T_DIR;
             }
         }
@@ -74,9 +80,9 @@ int    get_byte_to_do(t_cursor *cursor, unsigned char *arena)
                 res += T_REG;
             else if (tab[i] & 2)
             {
-                if (op_tab[op_code].dir_size == 0)
+                if (g_op_tab[op_code].dir_size == 0)
                     res += T_IND;
-                else if (op_tab[op_code].dir_size == 1)
+                else if (g_op_tab[op_code].dir_size == 1)
                     res += T_DIR;
             }
             else if (tab[i] & 3)

@@ -68,6 +68,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/libft/get_next_line.c.o"
   "CMakeFiles/corewar.dir/main.c.o"
   "CMakeFiles/corewar.dir/op.c.o"
+  "CMakeFiles/corewar.dir/operators.c.o"
   "corewar"
   "corewar.pdb"
 )

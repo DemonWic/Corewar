@@ -4,7 +4,6 @@
 #include "corewar.h"
 
 
-
 int				ft_isnumber(char *str)
 {
     int i;

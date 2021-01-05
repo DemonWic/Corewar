@@ -202,6 +202,7 @@ int add_cursor(t_init *data, int champ, int arena_id)
     new->num = data->champs[champ]->num;
     new->carry = 0;
     new->position = arena_id;
+    new->pc = arena_id;
     new->regs[1] = - data->champs[champ]->num;
     new->next = NULL;
 //    new->byte_to_next_op = get_byte_to_do(new, data->arena);
@@ -279,16 +280,35 @@ int main(int argc, char **argv) {
             data_free(data);
             return(1);
         }
+        else
+            data->live_player = data->cursors->num;
         i++;
     }
+    data->cycles_to_die = CYCLE_TO_DIE;
     i = 0;
     int run;
     run = 1;
+    t_cursor *buffer;
     while(run)
     {
-        while (data->cursors)
+        buffer = data->cursors;
+        while (buffer)
         {
-
+            if (buffer->op_code == 0 && buffer->cycle_to_op == 0)
+            {
+                buffer->op_code = (int)data->arena[buffer->position];
+                buffer->cycle_to_op = g_op_tab[buffer->op_code].cycles_to_do - 1;
+            }
+            else if (buffer->cycle_to_op > 0)
+                buffer->cycle_to_op--;
+            else if (buffer->cycle_to_op == 0)
+            {
+                int res;
+                res = g_op_tab[buffer->op_code].func(buffer, data);
+                buffer->op_code = 0;
+                buffer->cycle_to_op = 0;
+            }
+            buffer = buffer->next;
         }
         if (data->flag_dump && data->flag_dump == i)
         {
@@ -296,6 +316,7 @@ int main(int argc, char **argv) {
             data_free(data);
             run = 0;
         }
+        data->cycle++;
         i++;
     }
 
