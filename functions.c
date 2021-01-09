@@ -119,6 +119,24 @@ int	code_to_int(unsigned char *code, size_t size)
     return (result);
 }
 
+unsigned char *int_to_code(int num)
+{
+    int		i;
+    int     k;
+    unsigned char *res;
+
+    i = 0;
+    k = 24;
+    res = (unsigned char *)ft_memalloc(sizeof(unsigned char) * 4);
+    while (i < 4)
+    {
+        res[i] = (num >> k) & 255;
+        i++;
+        k -= 8;
+    }
+    return (res);
+}
+
 void error_large_file(t_init *data, int num)
 {
     ft_putstr("Error: File ");

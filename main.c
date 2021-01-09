@@ -297,11 +297,11 @@ int main(int argc, char **argv) {
             if (buffer->op_code == 0 && buffer->cycle_to_op == 0)
             {
                 buffer->op_code = (int)data->arena[buffer->position];
-                buffer->cycle_to_op = g_op_tab[buffer->op_code].cycles_to_do - 1;
+                buffer->cycle_to_op = g_op_tab[buffer->op_code].cycles_to_do;
             }
-            else if (buffer->cycle_to_op > 0)
+            if (buffer->cycle_to_op > 0)
                 buffer->cycle_to_op--;
-            else if (buffer->cycle_to_op == 0)
+            if (buffer->cycle_to_op == 0)
             {
                 int res;
                 res = g_op_tab[buffer->op_code].func(buffer, data);
@@ -317,6 +317,7 @@ int main(int argc, char **argv) {
             run = 0;
         }
         data->cycle++;
+        data->cycle_after_check++;
         i++;
     }
 

@@ -49,19 +49,25 @@ typedef struct      s_init
     int             num;
     int             flag_n; // 0 или число
     int             flag_dump; // 0 или число
+    int             flag_aff; // 0 или 1
     int             dump_num;
-    int             pl_count;
+
+    int             pl_count; // число игроков
     int             live_player;  // игрок о котором последнем сказали что он жив
     long int        cycle;   // количество циклов всего
-    long int        live_count; // количество выполненных операций `live` за последний период, длинной в `cycles_to_die`
+    int             cycle_after_check; // количество циклов после проверки
+    int             live_count; // количество выполненных операций `live` за последний период, длинной в `cycles_to_die`
     int             cycles_to_die; // длительность периода до проверки
-    int             check_count;
-//    int             error;  // флаги нужно запилить
+    int             check_count; // число проверок
+
     int             nums[MAX_PLAYERS + 1];
     int             invalid;
     t_bit           error;
+
     t_champ         **champs;
+
     unsigned char   arena[MEM_SIZE];
+
     t_cursor        *cursors;
 
 }                   t_init;
@@ -141,6 +147,7 @@ void	*ft_unmemcpy(void *dst, const void *src, size_t n);
 void	print_buf(unsigned char *buf);
 int    get_byte_to_do(t_cursor *cursor, unsigned char *arena);
 char *get_types_arg(t_cursor *cursor, unsigned char *arena);
+unsigned char *int_to_code(int num);
 
 #endif //COREWAR_COREWAR_H
 

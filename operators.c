@@ -39,6 +39,7 @@ int   op_ld(t_cursor *cursor, t_init *data)
 int op_st(t_cursor *cursor, t_init *data)
 {
     char *types;
+    unsigned char *num;
     int arg1;
     int arg2;
 
@@ -63,8 +64,11 @@ int op_st(t_cursor *cursor, t_init *data)
         arg2 = code_to_int(&(data->arena[cursor->position]), IND_SIZE) % IDX_MOD;
         cursor->position += IND_SIZE;
         // TODO int -> unsigned char
-        ft_unmemcpy(&(data->arena[cursor->pc + arg2]), (const void *)cursor->regs[arg1], REG_SIZE);
+        num = int_to_code(cursor->regs[arg1]);
+        ft_unmemcpy(&(data->arena[cursor->pc + arg2]), num, REG_SIZE);
+        free(num);
     }
+    free(types);
     return (0);
 }
 
@@ -260,6 +264,7 @@ int op_ldi(t_cursor *cursor, t_init *data)
 int op_sti(t_cursor *cursor, t_init *data)
 {
     char *types;
+    unsigned char *num;
     int arg1;
     int arg2;
     int arg3;
@@ -271,8 +276,13 @@ int op_sti(t_cursor *cursor, t_init *data)
     arg2 = get_value(types[1], cursor, data);
     arg3 = get_value(types[2], cursor, data);
     if (arg1 >= 1 && arg1 <= REG_NUMBER)
-        ft_unmemcpy(&(data->arena[cursor->pc + ((arg2 + arg3) % IDX_MOD)]), (const void *)cursor->regs[arg1], REG_SIZE); // возможно не прокатит TODO
+    {
+        num = int_to_code(cursor->regs[arg1]);
+        ft_unmemcpy(&(data->arena[cursor->pc + ((arg2 + arg3) % IDX_MOD)]), num, REG_SIZE); // возможно не прокатит TODO
+        free(num);
+    }
     cursor->pc = cursor->position;
+    free(types);
     return (0);
 }
 
@@ -407,7 +417,7 @@ int op_aff(t_cursor *cursor, t_init *data)
     arg1 = (int)data->arena[cursor->position];
     cursor->position += 1;
     cursor->pc = cursor->position;
-    if (arg1 >= 1 && arg1 <= REG_NUMBER)
+    if ((arg1 >= 1 && arg1 <= REG_NUMBER) && data->flag_aff)
     {
         sym = (char)cursor->regs[arg1];
         ft_putstr("Aff: ");
@@ -427,7 +437,10 @@ int op_live(t_cursor *cursor, t_init *data)
     cursor->position += g_op_tab[cursor->op_code].dir;
     arg1 = - arg1;
     if (arg1 >= 1 && arg1 <= data->pl_count)
+    {
         data->live_player = arg1;
+        data->live_count++;
+    }
     cursor->pc = cursor->position;
     return (0);
 }
