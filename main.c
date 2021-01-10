@@ -199,6 +199,7 @@ int add_cursor(t_init *data, int champ, int arena_id)
     new = (t_cursor *)ft_memalloc(sizeof(t_cursor));
     if (new == NULL)
         return (1);
+    data->cursors_count += 1;
     new->num = data->champs[champ]->num;
     new->carry = 0;
     new->position = arena_id;
@@ -215,6 +216,46 @@ int add_cursor(t_init *data, int champ, int arena_id)
         data->cursors = new;
     }
     return (0);
+}
+
+void kill_cursors(t_init *data)
+{
+    t_cursor *buf;
+    t_cursor *del;
+    t_cursor *prev;
+
+    buf = data->cursors;
+    while (buf)
+    {
+        if ((data->cycle - buf->cycle_num_live) >= data->cycles_to_die || data->cycles_to_die <= 0)
+        {
+            data->cursors_count -= 1;
+            del = buf;
+            buf = buf->next;
+            if (prev == NULL)
+                data->cursors = buf;
+            else
+                prev->next = buf;
+            ft_memdel((void **)&del);
+        }
+        else
+        {
+            prev = buf;
+            buf = buf->next;
+        }
+    }
+}
+
+void big_check(t_init *data)
+{
+    data->check_count += 1;
+    kill_cursors(data);
+    if (data->check_count == MAX_CHECKS || data->live_count >= NBR_LIVE)
+    {
+        data->check_count = 0;
+        data->cycles_to_die -= CYCLE_DELTA;
+    }
+    data->cycle_after_check = 0;
 }
 
 
@@ -310,6 +351,8 @@ int main(int argc, char **argv) {
             }
             buffer = buffer->next;
         }
+        if (data->cycle_after_check == data->cycles_to_die || data->cycles_to_die <= 0)
+            big_check(data);
         if (data->flag_dump && data->flag_dump == i)
         {
             print_buf(data->arena);

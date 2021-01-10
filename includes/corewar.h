@@ -69,6 +69,7 @@ typedef struct      s_init
     unsigned char   arena[MEM_SIZE];
 
     t_cursor        *cursors;
+    int             cursors_count;
 
 }                   t_init;
 
