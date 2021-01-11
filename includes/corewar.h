@@ -67,6 +67,7 @@ typedef struct      s_init
     t_champ         **champs;
 
     unsigned char   arena[MEM_SIZE];
+    unsigned char   col_arena[MEM_SIZE];
 
     t_cursor        *cursors;
     int             cursors_count;
@@ -149,6 +150,7 @@ void	print_buf(unsigned char *buf);
 int    get_byte_to_do(t_cursor *cursor, unsigned char *arena);
 char *get_types_arg(t_cursor *cursor, unsigned char *arena);
 unsigned char *int_to_code(int num);
+void	ft_color(void *s, size_t n, int color);
 
 #endif //COREWAR_COREWAR_H
 

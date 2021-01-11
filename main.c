@@ -259,6 +259,21 @@ void big_check(t_init *data)
 }
 
 
+void	ft_color(void *s, size_t n, int color)
+{
+    char	*r;
+    size_t	i;
+
+    r = (char *)s;
+    i = 0;
+    while (i < n)
+    {
+        r[i] = color;
+        i++;
+    }
+}
+
+
 int main(int argc, char **argv) {
     int i;
     int j;
@@ -315,6 +330,7 @@ int main(int argc, char **argv) {
     while (i < data->pl_count)
     {
         id = i * delta;
+        ft_color(&(data->col_arena[id]), (size_t)data->champs[i]->size, i + 1);
         ft_unmemcpy(&(data->arena[id]), data->champs[i]->code, (size_t)data->champs[i]->size);
         if (add_cursor(data, i, id))
         {
@@ -356,6 +372,11 @@ int main(int argc, char **argv) {
         if (data->flag_dump && data->flag_dump == i)
         {
             print_buf(data->arena);
+            data_free(data);
+            run = 0;
+        }
+        if (data->cursors == NULL)
+        {
             data_free(data);
             run = 0;
         }

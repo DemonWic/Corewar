@@ -65,6 +65,7 @@ int op_st(t_cursor *cursor, t_init *data)
         cursor->position += IND_SIZE;
         // TODO int -> unsigned char
         num = int_to_code(cursor->regs[arg1]);
+        ft_color(&(data->col_arena[cursor->pc + arg2]), REG_SIZE, (cursor->regs[1] * -1));
         ft_unmemcpy(&(data->arena[cursor->pc + arg2]), num, REG_SIZE);
         free(num);
     }
@@ -278,7 +279,8 @@ int op_sti(t_cursor *cursor, t_init *data)
     if (arg1 >= 1 && arg1 <= REG_NUMBER)
     {
         num = int_to_code(cursor->regs[arg1]);
-        ft_unmemcpy(&(data->arena[cursor->pc + ((arg2 + arg3) % IDX_MOD)]), num, REG_SIZE); // возможно не прокатит TODO
+        ft_color(&(data->col_arena[cursor->pc + ((arg2 + arg3) % IDX_MOD)]), REG_SIZE, (cursor->regs[1] * -1));
+        ft_unmemcpy(&(data->arena[cursor->pc + ((arg2 + arg3) % IDX_MOD)]), num, REG_SIZE);
         free(num);
     }
     cursor->pc = cursor->position;
@@ -309,12 +311,16 @@ int op_fork(t_cursor *cursor, t_init *data)
     new->position = arg1;
     new->pc = arg1;
     if (data->cursors == NULL)
+    {
         data->cursors = new;
+        data->cursors_count++;
+    }
     else
     {
         buf = data->cursors;
         new->next = buf;
         data->cursors = new;
+        data->cursors_count++;
     }
     return (0);
 }
@@ -396,12 +402,16 @@ int op_lfork(t_cursor *cursor, t_init *data)
     new->position = arg1;
     new->pc = arg1;
     if (data->cursors == NULL)
+    {
         data->cursors = new;
+        data->cursors_count++;
+    }
     else
     {
         buf = data->cursors;
         new->next = buf;
         data->cursors = new;
+        data->cursors_count++;
     }
     return (0);
 }

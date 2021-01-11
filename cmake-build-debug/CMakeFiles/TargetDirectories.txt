@@ -1,3 +1,3 @@
-/Users/u17867258/Desktop/Corewar/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/u17867258/Desktop/Corewar/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/u17867258/Desktop/Corewar/cmake-build-debug/CMakeFiles/corewar.dir
+/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/corewar.dir
