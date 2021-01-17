@@ -51,6 +51,7 @@ typedef struct      s_init
     int             flag_dump; // 0 или число
     int             flag_aff; // 0 или 1
     int             dump_num;
+    int             flag_vis;
 
     int             pl_count; // число игроков
     int             live_player;  // игрок о котором последнем сказали что он жив
@@ -150,7 +151,10 @@ void	print_buf(unsigned char *buf);
 int    get_byte_to_do(t_cursor *cursor, unsigned char *arena);
 char *get_types_arg(t_cursor *cursor, unsigned char *arena);
 unsigned char *int_to_code(int num);
-void	ft_color(void *s, size_t n, int color);
+void	ft_color(t_init *data, int addr, size_t n, int color);
+void	ft_unmemcpy2(t_init *data, int addr, unsigned char *src, size_t n);
+int cor_addr(int num);
+int	code_to_int2(t_init *data, int addr, size_t size);
 
 #endif //COREWAR_COREWAR_H
 

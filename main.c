@@ -114,6 +114,10 @@ int    validation(int argc, char **argv, t_init *data)
             else
                 data->error.help = 1;
         }
+        else if (!ft_strcmp(argv[i], "-v"))
+            data->flag_vis = 1;
+        else if (!ft_strcmp(argv[i], "-v"))
+            data->flag_aff = 1;
         else
             data->error.help = 1;
         i++;
@@ -225,6 +229,7 @@ void kill_cursors(t_init *data)
     t_cursor *prev;
 
     buf = data->cursors;
+    prev = NULL;
     while (buf)
     {
         if ((data->cycle - buf->cycle_num_live) >= data->cycles_to_die || data->cycles_to_die <= 0)
@@ -259,20 +264,24 @@ void big_check(t_init *data)
 }
 
 
-void	ft_color(void *s, size_t n, int color)
+void	ft_color(t_init *data, int addr, size_t n, int color)
 {
-    char	*r;
     size_t	i;
 
-    r = (char *)s;
     i = 0;
     while (i < n)
     {
-        r[i] = color;
+        data->col_arena[cor_addr(addr)] = color;
         i++;
+        addr++;
     }
 }
 
+int check_all(t_init *data, t_cursor *cursor)
+{
+
+    return (1);
+}
 
 int main(int argc, char **argv) {
     int i;
@@ -330,7 +339,7 @@ int main(int argc, char **argv) {
     while (i < data->pl_count)
     {
         id = i * delta;
-        ft_color(&(data->col_arena[id]), (size_t)data->champs[i]->size, i + 1);
+        ft_color(data, &(data->col_arena[id]), (size_t)data->champs[i]->size, i + 1);
         ft_unmemcpy(&(data->arena[id]), data->champs[i]->code, (size_t)data->champs[i]->size);
         if (add_cursor(data, i, id))
         {
@@ -348,28 +357,44 @@ int main(int argc, char **argv) {
     t_cursor *buffer;
     while(run)
     {
+        data->cycle++;
+        data->cycle_after_check++;
+        i++;
         buffer = data->cursors;
+        int j = 0;
         while (buffer)
         {
-            if (buffer->op_code == 0 && buffer->cycle_to_op == 0)
+            if (buffer->cycle_to_op == 0)
             {
                 buffer->op_code = (int)data->arena[buffer->position];
-                buffer->cycle_to_op = g_op_tab[buffer->op_code].cycles_to_do;
+                if (buffer->op_code >= 1 && buffer->op_code <= 16)
+                    buffer->cycle_to_op = g_op_tab[buffer->op_code].cycles_to_do;
+                else
+                    buffer->cycle_to_op = 0;
             }
             if (buffer->cycle_to_op > 0)
                 buffer->cycle_to_op--;
             if (buffer->cycle_to_op == 0)
             {
                 int res;
-                res = g_op_tab[buffer->op_code].func(buffer, data);
+                if (buffer->op_code >= 1 && buffer->op_code <= 16 && check_all(data, buffer))
+                    res = g_op_tab[buffer->op_code].func(buffer, data);
+                else
+                    {
+                    buffer->pc = cor_addr(buffer->pc + 1);
+                    buffer->position = buffer->pc;
+                }
+//                printf("num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", buffer->num, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
                 buffer->op_code = 0;
                 buffer->cycle_to_op = 0;
             }
+//            printf("num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", buffer->num, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
             buffer = buffer->next;
+            j++;
         }
         if (data->cycle_after_check == data->cycles_to_die || data->cycles_to_die <= 0)
             big_check(data);
-        if (data->flag_dump && data->flag_dump == i)
+        if (data->flag_dump && data->dump_num == i)
         {
             print_buf(data->arena);
             data_free(data);
@@ -380,10 +405,12 @@ int main(int argc, char **argv) {
             data_free(data);
             run = 0;
         }
-        data->cycle++;
-        data->cycle_after_check++;
-        i++;
+        // delete
+        if (data->cycle == 14763)
+            printf("HELOO\n");
     }
+    printf("num cycle = %li\n", i);
+    printf("winner = %i\n", data->live_player);
 
     return 0;
 }

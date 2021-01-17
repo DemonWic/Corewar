@@ -46,6 +46,8 @@ t_init  *init_data(void)
     data->num = 0;
     data->flag_n = 0;
     data->flag_dump = 0;
+    data->flag_aff = 0;
+    data->flag_vis = 0;
     data->pl_count = 0;
     data->invalid = 0;
     data->error.help = 0;
@@ -74,6 +76,10 @@ void    pre_valid(int argc, char **argv, t_init *data)
             data->flag_dump++;
         else if (ft_isnumber(argv[i]))
             data->num++;
+        else if (!ft_strcmp(argv[i], "-v"))
+            data->flag_vis = 1;
+        else if (!ft_strcmp(argv[i], "-a"))
+            data->flag_aff = 1;
         else
             data->error.help = 1;
         i++;
@@ -111,6 +117,30 @@ int	code_to_int(unsigned char *code, size_t size)
             result += ((code[size - 1] ^ 255) << (i * 8));
         else
             result += code[size - 1] << (i * 8);
+        size--;
+        i++;
+    }
+    if (sign)
+        result = ~(result);
+    return (result);
+}
+
+int	code_to_int2(t_init *data, int addr, size_t size)
+{
+    int	result;
+    int	sign;
+    int	i;
+
+    result = 0;
+    sign = (int)(data->arena[cor_addr(addr)] & 128);
+    size += addr;
+    i = 0;
+    while (size > addr)
+    {
+        if (sign)
+            result += ((data->arena[cor_addr(size - 1)] ^ 255) << (i * 8));
+        else
+            result += data->arena[cor_addr(size - 1)] << (i * 8);
         size--;
         i++;
     }
@@ -203,6 +233,19 @@ int check_errors(t_init *data, int num)
         return (1);
     }
     return (0);
+}
+
+void	ft_unmemcpy2(t_init *data, int addr, unsigned char *src, size_t n)
+{
+    size_t	i;
+
+    i = 0;
+    while (i < n)
+    {
+        data->arena[cor_addr(addr)] = src[i];
+        i++;
+        addr++;
+    }
 }
 
 void	*ft_unmemcpy(void *dst, const void *src, size_t n)

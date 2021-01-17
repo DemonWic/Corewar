@@ -25,7 +25,7 @@ char *get_types_arg(t_cursor *cursor, unsigned char *arena)
     int i;
 
     i = -1;
-    cursor->op_code = arena[cursor->position];
+//    cursor->op_code = arena[cursor->position];
     tab = (char *)ft_memalloc(sizeof(char) * 3);
     if (g_op_tab[cursor->op_code].code_arg == 0)
         return (tab);

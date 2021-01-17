@@ -49,6 +49,7 @@ void	print_buf(unsigned char *buf)
 		if (counters[2] == 16)
 			break ;
 		i += 32;
-		ft_putchar('\n');
+        ft_putchar(' ');
+        ft_putchar('\n');
 	}
 }

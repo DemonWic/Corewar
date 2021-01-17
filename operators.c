@@ -4,6 +4,16 @@
 
 #include "corewar.h"
 
+
+int cor_addr(int num)
+{
+    int res;
+
+    res = num % MEM_SIZE;
+    if (res < 0)
+        res += MEM_SIZE;
+    return (res);
+}
 int   op_ld(t_cursor *cursor, t_init *data)
 {
     char *types;              // TODO Возможно прописать валидацию типов аргументов согласно таблице !!! обязательно
@@ -16,13 +26,16 @@ int   op_ld(t_cursor *cursor, t_init *data)
     cursor->position += 2;
     if (types[0] == DIR_CODE)  // T_DIR
     {
-        arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+//        arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+        arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir);
         cursor->position += g_op_tab[cursor->op_code].dir;
     }
     else if (types[0] == IND_CODE)
     {
-        arg1 = code_to_int(&(data->arena[cursor->position]), IND_SIZE);
-        arg1 = code_to_int(&(data->arena[cursor->pc + (arg1 % IDX_MOD)]), 4);
+//        arg1 = code_to_int(&(data->arena[cursor->position]), IND_SIZE);
+        arg1 = code_to_int2(data, cursor->position, IND_SIZE);
+//        arg1 = code_to_int(&(data->arena[cursor->pc + (arg1 % IDX_MOD)]), 4);
+        arg1 = code_to_int2(data, (cursor->pc + (arg1 % IDX_MOD)), 4);
         cursor->position += IND_SIZE;
     }
     arg2 = (int)data->arena[cursor->position];
@@ -61,12 +74,14 @@ int op_st(t_cursor *cursor, t_init *data)
     }
     else if (types[1] == IND_CODE)
     {
-        arg2 = code_to_int(&(data->arena[cursor->position]), IND_SIZE) % IDX_MOD;
+//        arg2 = code_to_int(&(data->arena[cursor->position]), IND_SIZE) % IDX_MOD;
+        arg2 = code_to_int2(data, cursor->position, IND_SIZE) % IDX_MOD;
         cursor->position += IND_SIZE;
         // TODO int -> unsigned char
         num = int_to_code(cursor->regs[arg1]);
-        ft_color(&(data->col_arena[cursor->pc + arg2]), REG_SIZE, (cursor->regs[1] * -1));
-        ft_unmemcpy(&(data->arena[cursor->pc + arg2]), num, REG_SIZE);
+        ft_color(data, cor_addr(cursor->pc + arg2), REG_SIZE, (cursor->regs[1] * -1));
+        ft_unmemcpy2(data, cor_addr(cursor->pc + arg2), num, REG_SIZE);
+//        ft_unmemcpy(&(data->arena[cor_addr(cursor->pc + arg2)]), num, REG_SIZE);
         free(num);
     }
     free(types);
@@ -126,6 +141,7 @@ int get_value(int type, t_cursor *cursor, t_init *data)
 {
     int arg1;
 
+    arg1 = 0;
     if (type == REG_CODE)
     {
         arg1 = (int)data->arena[cursor->position];
@@ -135,13 +151,16 @@ int get_value(int type, t_cursor *cursor, t_init *data)
     }
     else if (type == IND_CODE)
     {
-        arg1 = code_to_int(&(data->arena[cursor->position]), IND_SIZE) % IDX_MOD;
-        arg1 = code_to_int(&(data->arena[cursor->pc + arg1]), 4);
+//        arg1 = code_to_int(&(data->arena[cursor->position]), IND_SIZE) % IDX_MOD;
+        arg1 = code_to_int2(data, cursor->position, IND_SIZE) % IDX_MOD;
+//        arg1 = code_to_int(&(data->arena[cursor->pc + arg1]), 4);
+        arg1 = code_to_int2(data, (cursor->pc + arg1), 4);
         cursor->position += IND_SIZE;
     }
     else if (type == DIR_CODE)
     {
-        arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+//        arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+        arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir);
         cursor->position += g_op_tab[cursor->op_code].dir;
     }
     return (arg1);
@@ -226,10 +245,12 @@ int op_zjmp(t_cursor *cursor, t_init *data)
     int arg1;
 
     cursor->position += 1;
-    arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir) % IDX_MOD;
+//    arg2 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir) % IDX_MOD;
+    arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir) % IDX_MOD;
     if (cursor->carry == 1)
     {
         cursor->pc += arg1;
+        cursor->pc = cor_addr(cursor->pc);
         cursor->position = cursor->pc;
     }
     else
@@ -255,7 +276,8 @@ int op_ldi(t_cursor *cursor, t_init *data)
     cursor->position += 1;
     if (arg3 >= 1 && arg3 <= REG_NUMBER)
     {
-        cursor->regs[arg3] = code_to_int(&(data->arena[cursor->pc + ((arg1 + arg2) % IDX_MOD)]), 4);
+//        cursor->regs[arg3] = code_to_int(&(data->arena[cursor->pc + ((arg1 + arg2) % IDX_MOD)]), 4);
+        cursor->regs[arg3] = code_to_int2(data, (cursor->pc + ((arg1 + arg2) % IDX_MOD)), 4);
         cursor->carry = (cursor->regs[arg3] == 0) ? 1 : 0;
     }
     cursor->pc = cursor->position;
@@ -269,6 +291,7 @@ int op_sti(t_cursor *cursor, t_init *data)
     int arg1;
     int arg2;
     int arg3;
+    int addr;
 
     types = get_types_arg(cursor, data->arena);
     cursor->position += 2;
@@ -279,8 +302,10 @@ int op_sti(t_cursor *cursor, t_init *data)
     if (arg1 >= 1 && arg1 <= REG_NUMBER)
     {
         num = int_to_code(cursor->regs[arg1]);
-        ft_color(&(data->col_arena[cursor->pc + ((arg2 + arg3) % IDX_MOD)]), REG_SIZE, (cursor->regs[1] * -1));
-        ft_unmemcpy(&(data->arena[cursor->pc + ((arg2 + arg3) % IDX_MOD)]), num, REG_SIZE);
+        addr = cor_addr(cursor->pc + ((arg2 + arg3) % IDX_MOD));
+        ft_color(data, addr, REG_SIZE, (cursor->regs[1] * -1));
+        ft_unmemcpy2(data, addr, num, REG_SIZE);
+//        ft_unmemcpy(&(data->arena[addr]), num, REG_SIZE);
         free(num);
     }
     cursor->pc = cursor->position;
@@ -297,7 +322,9 @@ int op_fork(t_cursor *cursor, t_init *data)
 
     i = -1;
     cursor->position += 1;
-    arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir) % IDX_MOD;
+//    arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir) % IDX_MOD;
+    arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir) % IDX_MOD;
+    arg1 = cursor->pc + arg1;
     cursor->position += g_op_tab[cursor->op_code].dir;
     cursor->pc = cursor->position;
     new = (t_cursor *)ft_memalloc(sizeof(t_cursor));
@@ -337,13 +364,16 @@ int    op_lld(t_cursor *cursor, t_init *data)
     cursor->position += 2;
     if (types[0] == DIR_CODE)  // T_DIR
     {
-        arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+//        arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+        arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir);
         cursor->position += g_op_tab[cursor->op_code].dir;
     }
     else if (types[0] == IND_CODE)
     {
-        arg1 = code_to_int(&(data->arena[cursor->position]), IND_SIZE);
-        arg1 = code_to_int(&(data->arena[cursor->pc + arg1]), 4);
+//        arg1 = code_to_int(&(data->arena[cursor->position]), IND_SIZE);
+        arg1 = code_to_int2(data, cursor->position, IND_SIZE);
+//        arg1 = code_to_int(&(data->arena[cursor->pc + arg1]), 4);
+        arg1 = code_to_int2(data, (cursor->pc + arg1), 4);
         cursor->position += IND_SIZE;
     }
     arg2 = (int)data->arena[cursor->position];
@@ -372,7 +402,8 @@ int op_lldi(t_cursor *cursor, t_init *data)
     cursor->position += 1;
     if (arg3 >= 1 && arg3 <= REG_NUMBER)
     {
-        cursor->regs[arg3] = code_to_int(&(data->arena[cursor->pc + (arg1 + arg2)]), 4);
+//        cursor->regs[arg3] = code_to_int(&(data->arena[cursor->pc + (arg1 + arg2)]), 4);
+        cursor->regs[arg3] = code_to_int2(data, (cursor->pc + (arg1 + arg2)), 4);
         cursor->carry = (cursor->regs[arg3] == 0) ? 1 : 0;
     }
     cursor->pc = cursor->position;
@@ -388,7 +419,9 @@ int op_lfork(t_cursor *cursor, t_init *data)
 
     i = -1;
     cursor->position += 1;
-    arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+//    arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+    arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir);
+    arg1 = cursor->pc + arg1;
     cursor->position += g_op_tab[cursor->op_code].dir;
     cursor->pc = cursor->position;
     new = (t_cursor *)ft_memalloc(sizeof(t_cursor));
@@ -443,7 +476,8 @@ int op_live(t_cursor *cursor, t_init *data)
 
     cursor->cycle_num_live = data->cycle;
     cursor->position += 1;
-    arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+//    arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
+    arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir);
     cursor->position += g_op_tab[cursor->op_code].dir;
     arg1 = - arg1;
     if (arg1 >= 1 && arg1 <= data->pl_count)
