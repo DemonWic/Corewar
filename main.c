@@ -204,6 +204,8 @@ int add_cursor(t_init *data, int champ, int arena_id)
     if (new == NULL)
         return (1);
     data->cursors_count += 1;
+    data->cursor_num += 1;
+    new->number = data->cursor_num;
     new->num = data->champs[champ]->num;
     new->carry = 0;
     new->position = arena_id;
@@ -277,10 +279,116 @@ void	ft_color(t_init *data, int addr, size_t n, int color)
     }
 }
 
-int check_all(t_init *data, t_cursor *cursor)
+int arg_size(char type, t_cursor *cursor)
 {
+//    int arg_tab[4] ={0, T_REG, T_DIR, T_IND};
 
+    if (type & T_REG)
+        return (1);
+    if (type & T_DIR)
+        return (g_op_tab[cursor->op_code].dir);
+    if (type & T_IND)
+        return (IND_SIZE);
+    return (0);
+}
+
+int check_args_types2(t_init *data, t_cursor *cursor)
+{
+    char *arg_types;
+    int i;
+    int reg;
+
+
+    i = 0;
+    reg = 0;
+    int arg_tab[4] ={0, T_REG, T_DIR, T_IND};
+    arg_types = get_types_arg(cursor, data->arena);
+    if (arg_types == NULL)
+        return (0);
+    cursor->position += 1 + g_op_tab[cursor->op_code].code_arg;
+    if (arg_types[0] != 0)
+    {
+        while (i < g_op_tab[cursor->op_code].arg_num) {
+            if (!(arg_tab[arg_types[i]] & g_op_tab[cursor->op_code].arg_types[i])) // check args types
+                return (0);
+            if (arg_tab[arg_types[i]] == T_REG) // check register args
+            {
+                reg = (int) data->arena[cor_addr(cursor->position)];
+                if (!(reg >= 1 && reg <= 16))
+                    return (0);
+            }
+            cursor->position += arg_size(arg_tab[arg_types[i]], cursor);
+            i++;
+        }
+    }
+    cursor->position = cursor->pc;
+    free(arg_types);
     return (1);
+}
+
+
+int check_args_types(t_init *data, t_cursor *cursor)
+{
+    char *arg_types;
+    int i;
+    int reg;
+
+
+    i = 0;
+    reg = 0;
+    int arg_tab[4] ={0, T_REG, T_DIR, T_IND};
+    arg_types = get_types_arg(cursor, data->arena);
+    if (arg_types == NULL)
+        return (0);
+    cursor->position += 1 + g_op_tab[cursor->op_code].code_arg;
+    while (i < g_op_tab[cursor->op_code].arg_num)
+    {
+        if (!(arg_tab[arg_types[i]] & g_op_tab[cursor->op_code].arg_types[i]))
+            return (0);
+        i++;
+    }
+    i = 0;
+    while (i < g_op_tab[cursor->op_code].arg_num)
+    {
+        if (arg_tab[arg_types[i]] == T_REG)
+        {
+            reg = (int) data->arena[cor_addr(cursor->position)];
+            if (!(reg >= 1 && reg <= 16))
+                return (0);
+        }
+        cursor->position += arg_size(arg_tab[arg_types[i]], cursor);
+        i++;
+    }
+    cursor->position = cursor->pc;
+    free(arg_types);
+    return (1);
+}
+
+void update_cur(t_init *data, t_cursor *cursor)
+{
+    int step;
+    int i;
+    char *arg_types;
+    int arg_tab[4] ={0, T_REG, T_DIR, T_IND};
+
+    if (cursor->pc != cursor->position)
+        cursor->position = cursor->pc;
+    i = 0;
+    arg_types = get_types_arg(cursor, data->arena);
+    step = 1 + g_op_tab[cursor->op_code].code_arg;
+    if (g_op_tab[cursor->op_code].code_arg)
+    {
+        while (i < g_op_tab[cursor->op_code].arg_num)
+        {
+            step += arg_size(arg_tab[arg_types[i]], cursor);
+            i++;
+        }
+    }
+    else
+        step += arg_size(arg_tab[g_op_tab[cursor->op_code].arg_types[0]], cursor);
+//    step = get_byte_to_do(cursor, data->arena);
+    cursor->position = cor_addr((cursor->position + step));
+    cursor->pc = cursor->position;
 }
 
 int main(int argc, char **argv) {
@@ -340,7 +448,8 @@ int main(int argc, char **argv) {
     {
         id = i * delta;
         ft_color(data, &(data->col_arena[id]), (size_t)data->champs[i]->size, i + 1);
-        ft_unmemcpy(&(data->arena[id]), data->champs[i]->code, (size_t)data->champs[i]->size);
+        ft_unmemcpy2(data, id, data->champs[i]->code, (size_t)data->champs[i]->size);
+//        ft_unmemcpy(&(data->arena[id]), data->champs[i]->code, (size_t)data->champs[i]->size);
         if (add_cursor(data, i, id))
         {
             data_free(data);
@@ -366,7 +475,7 @@ int main(int argc, char **argv) {
         {
             if (buffer->cycle_to_op == 0)
             {
-                buffer->op_code = (int)data->arena[buffer->position];
+                buffer->op_code = (int)data->arena[cor_addr(buffer->position)];
                 if (buffer->op_code >= 1 && buffer->op_code <= 16)
                     buffer->cycle_to_op = g_op_tab[buffer->op_code].cycles_to_do;
                 else
@@ -377,18 +486,29 @@ int main(int argc, char **argv) {
             if (buffer->cycle_to_op == 0)
             {
                 int res;
-                if (buffer->op_code >= 1 && buffer->op_code <= 16 && check_all(data, buffer))
-                    res = g_op_tab[buffer->op_code].func(buffer, data);
+                if (buffer->op_code >= 1 && buffer->op_code <= 16)
+                {
+                    if (check_args_types(data, buffer))
+                    {
+                        res = g_op_tab[buffer->op_code].func(buffer, data);
+                        buffer->cycle_to_op = 0;
+                    }
+                    else
+                        {
+//                        printf("ОШИБКА цикл= %i\n", data->cycle);
+                        update_cur(data, buffer);
+                    }
+                }
                 else
                     {
                     buffer->pc = cor_addr(buffer->pc + 1);
                     buffer->position = buffer->pc;
                 }
 //                printf("num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", buffer->num, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
-                buffer->op_code = 0;
-                buffer->cycle_to_op = 0;
+//                buffer->op_code = 0;
+//                buffer->cycle_to_op = 0;
             }
-//            printf("num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", buffer->num, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
+            printf("num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", buffer->number, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
             buffer = buffer->next;
             j++;
         }
@@ -406,8 +526,8 @@ int main(int argc, char **argv) {
             run = 0;
         }
         // delete
-        if (data->cycle == 14763)
-            printf("HELOO\n");
+//        if (data->cycle == 4670)
+//            printf("HELOO\n");
     }
     printf("num cycle = %li\n", i);
     printf("winner = %i\n", data->live_player);

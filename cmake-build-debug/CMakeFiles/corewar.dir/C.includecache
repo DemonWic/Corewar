@@ -28,7 +28,9 @@ stdio.h
 
 ../includes/op.h
 
-/Users/ahintz/CLionProjects/Corewar2/flag_d.c
+/Users/ahintz/CLionProjects/Corewar2/main.c
+stdio.h
+-
 corewar.h
 /Users/ahintz/CLionProjects/Corewar2/corewar.h
 

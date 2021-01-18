@@ -44,6 +44,7 @@ t_init  *init_data(void)
     if (data == NULL)
         return (NULL);
     data->num = 0;
+    data->cursor_num = 0;
     data->flag_n = 0;
     data->flag_dump = 0;
     data->flag_aff = 0;

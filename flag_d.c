@@ -27,7 +27,8 @@ void	print_buf(unsigned char *buf)
 		ft_putchar(hex_char(counters[1]));
 		ft_putchar(hex_char(counters[0]));
 		ft_putchar('0');
-		counters[0] += 2;
+        counters[0] += 2;
+//        counters[0] += 4;
 		if (counters[0] == 16)
 		{
 			counters[0] = 0;
@@ -39,7 +40,8 @@ void	print_buf(unsigned char *buf)
 			counters[2] += 1;
 		}
 		ft_putstr(" :");
-		while (j < 32)
+        while (j < 32)
+//        while (j < 64)
 		{
 			ft_putchar(' ');
 			ft_putchar(hex_char(buf[i + j] / 16));
@@ -48,7 +50,8 @@ void	print_buf(unsigned char *buf)
 		}
 		if (counters[2] == 16)
 			break ;
-		i += 32;
+        i += 32;
+//        i += 64;
         ft_putchar(' ');
         ft_putchar('\n');
 	}

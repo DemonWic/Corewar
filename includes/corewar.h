@@ -11,6 +11,7 @@
 
 typedef struct s_cursor
 {
+    int         number;
     int         num; // уникальный номер каретки
     int         carry; // carry или true или false 1/0 изначально 0
     int         op_code; // код операции на которой стоит каретка
@@ -72,6 +73,7 @@ typedef struct      s_init
 
     t_cursor        *cursors;
     int             cursors_count;
+    int             cursor_num;
 
 }                   t_init;
 

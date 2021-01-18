@@ -25,13 +25,18 @@ char *get_types_arg(t_cursor *cursor, unsigned char *arena)
     int i;
 
     i = -1;
-//    cursor->op_code = arena[cursor->position];
     tab = (char *)ft_memalloc(sizeof(char) * 3);
+    if (tab == NULL)
+        return (NULL);
+//    cursor->op_code = arena[cursor->position];
     if (g_op_tab[cursor->op_code].code_arg == 0)
+    {
+        tab[0] = 2;
         return (tab);
+    }
     else
     {
-        arg_code = arena[cursor->position + 1];
+        arg_code = arena[cor_addr(cursor->position + 1)];
         while (++i < 3)
         {
             tab[i] = (arg_code & (192 >> (i * 2))) >> (6 - (i * 2));
@@ -51,42 +56,32 @@ int    get_byte_to_do(t_cursor *cursor, unsigned char *arena)
 
     i = -1;
     res = 1;
-    op_code = arena[cursor->position];
+    op_code = cursor->op_code;
     if (g_op_tab[op_code].code_arg == 0)  // значит кода аргументов нет
     {
         while (++i < 3)
         {
             if (g_op_tab[op_code].arg_types[i] & T_IND)
-                res += T_IND;
+                res += IND_SIZE;
             else if (g_op_tab[op_code].arg_types[i] & T_REG)
-                res += T_REG;
+                res += REG_SIZE;
             else if (g_op_tab[op_code].arg_types[i] & T_DIR)
-            {
-                if (g_op_tab[op_code].dir_size == 0)
-                    res += T_IND;
-                else if (g_op_tab[op_code].dir_size == 1)
-                    res += T_DIR;
-            }
+                res += g_op_tab[op_code].dir;
         }
     }
     else
     {
         res++;
-        arg_code = arena[cursor->position + 1];
+        arg_code = arena[cor_addr(cursor->position + 1)];
         while (++i < 3)
         {
             tab[i] = (arg_code & (192 >> (i * 2))) >> (6 - (i * 2));
             if (tab[i] & 1)
-                res += T_REG;
+                res += REG_SIZE;
             else if (tab[i] & 2)
-            {
-                if (g_op_tab[op_code].dir_size == 0)
-                    res += T_IND;
-                else if (g_op_tab[op_code].dir_size == 1)
-                    res += T_DIR;
-            }
+                res += g_op_tab[op_code].dir;
             else if (tab[i] & 3)
-                res += T_DIR;
+                res += IND_SIZE;
         }
         // 192 - 1 48 - 2 12 - 3
     }
