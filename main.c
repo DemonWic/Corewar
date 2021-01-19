@@ -263,6 +263,7 @@ void big_check(t_init *data)
         data->cycles_to_die -= CYCLE_DELTA;
     }
     data->cycle_after_check = 0;
+    data->live_count = 0;
 }
 
 
@@ -508,7 +509,7 @@ int main(int argc, char **argv) {
 //                buffer->op_code = 0;
 //                buffer->cycle_to_op = 0;
             }
-            printf("num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", buffer->number, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
+            printf("cycles_to_die = %i live_count = %i  num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", data->cycles_to_die, data->live_count, buffer->number, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
             buffer = buffer->next;
             j++;
         }
@@ -526,7 +527,7 @@ int main(int argc, char **argv) {
             run = 0;
         }
         // delete
-//        if (data->cycle == 4670)
+//        if (data->cycle == 204)
 //            printf("HELOO\n");
     }
     printf("num cycle = %li\n", i);

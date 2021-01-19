@@ -506,12 +506,13 @@ int op_live(t_cursor *cursor, t_init *data)
     cursor->position += 1;
 //    arg1 = code_to_int(&(data->arena[cursor->position]), g_op_tab[cursor->op_code].dir);
     arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir);
+    data->live_count++;
     cursor->position += g_op_tab[cursor->op_code].dir;
     arg1 = - arg1;
     if (arg1 >= 1 && arg1 <= data->pl_count)
     {
         data->live_player = arg1;
-        data->live_count++;
+//        data->live_count++;
     }
     cursor->position = cor_addr(cursor->position);
     cursor->pc = cursor->position;
