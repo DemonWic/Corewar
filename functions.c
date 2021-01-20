@@ -78,14 +78,20 @@ void    pre_valid(int argc, char **argv, t_init *data)
         else if (ft_isnumber(argv[i]))
             data->num++;
         else if (!ft_strcmp(argv[i], "-v"))
-            data->flag_vis = 1;
+            data->flag_vis++;
         else if (!ft_strcmp(argv[i], "-a"))
-            data->flag_aff = 1;
+            data->flag_aff++;
+        else if (!ft_strcmp(argv[i], "-d"))
+            data->flag_d++;
         else
             data->error.help = 1;
         i++;
     }
-    if (data->num != (data->flag_n + data->flag_dump))
+    if (data->flag_dump && data->flag_d)
+        data->error.help = 1;
+    if (data->flag_dump > 1 || data->flag_d > 1 || data->flag_aff > 1 || data->flag_vis > 1)
+        data->error.help = 1;
+    if (data->num != (data->flag_n + data->flag_dump + data->flag_d))
         data->error.help = 1;
 }
 

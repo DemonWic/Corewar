@@ -4,14 +4,14 @@
 
 #include "corewar.h"
 
-char	hex_char(int a)
-{
-    if (a < 10)
-        return (a + '0');
-    if (a >= 10 && a < 16)
-        return (a + 'a' - 10);
-    return (0);
-}
+//char	hex_char(int a)
+//{
+//    if (a < 10)
+//        return (a + '0');
+//    if (a >= 10 && a < 16)
+//        return (a + 'a' - 10);
+//    return (0);
+//}
 
 void	print_buf2(unsigned char *buf)
 {

@@ -6,6 +6,11 @@ CMakeFiles/corewar.dir/flag_d.c.o
  ../includes/libft.h
  ../includes/op.h
  /Users/ahintz/CLionProjects/Corewar2/flag_d.c
+CMakeFiles/corewar.dir/flag_d2.c.o
+ ../includes/corewar.h
+ ../includes/libft.h
+ ../includes/op.h
+ /Users/ahintz/CLionProjects/Corewar2/flag_d2.c
 CMakeFiles/corewar.dir/functions.c.o
  ../includes/corewar.h
  ../includes/libft.h

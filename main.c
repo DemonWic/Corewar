@@ -114,9 +114,19 @@ int    validation(int argc, char **argv, t_init *data)
             else
                 data->error.help = 1;
         }
+        else if (!ft_strcmp(argv[i], "-d"))
+        {
+            if (ft_isnumber(argv[i + 1]) && ft_atoi(argv[i + 1]) >= 0) //TODO check for max int and no more
+            {
+                data->d_num = ft_atoi(argv[i + 1]);
+                i++;
+            }
+            else
+                data->error.help = 1;
+        }
         else if (!ft_strcmp(argv[i], "-v"))
             data->flag_vis = 1;
-        else if (!ft_strcmp(argv[i], "-v"))
+        else if (!ft_strcmp(argv[i], "-a"))
             data->flag_aff = 1;
         else
             data->error.help = 1;
@@ -345,7 +355,10 @@ int check_args_types(t_init *data, t_cursor *cursor)
     while (i < g_op_tab[cursor->op_code].arg_num)
     {
         if (!(arg_tab[arg_types[i]] & g_op_tab[cursor->op_code].arg_types[i]))
+        {
+            ft_memdel((void **)&arg_types);
             return (0);
+        }
         i++;
     }
     i = 0;
@@ -355,13 +368,16 @@ int check_args_types(t_init *data, t_cursor *cursor)
         {
             reg = (int) data->arena[cor_addr(cursor->position)];
             if (!(reg >= 1 && reg <= 16))
+            {
+                ft_memdel((void **)&arg_types);
                 return (0);
+            }
         }
         cursor->position += arg_size(arg_tab[arg_types[i]], cursor);
         i++;
     }
     cursor->position = cursor->pc;
-    free(arg_types);
+    ft_memdel((void **)&arg_types);
     return (1);
 }
 
@@ -390,6 +406,7 @@ void update_cur(t_init *data, t_cursor *cursor)
 //    step = get_byte_to_do(cursor, data->arena);
     cursor->position = cor_addr((cursor->position + step));
     cursor->pc = cursor->position;
+    ft_memdel((void **)&arg_types);
 }
 
 int main(int argc, char **argv) {
@@ -448,7 +465,7 @@ int main(int argc, char **argv) {
     while (i < data->pl_count)
     {
         id = i * delta;
-        ft_color(data, &(data->col_arena[id]), (size_t)data->champs[i]->size, i + 1);
+        ft_color(data, id, (size_t)data->champs[i]->size, i + 1);
         ft_unmemcpy2(data, id, data->champs[i]->code, (size_t)data->champs[i]->size);
 //        ft_unmemcpy(&(data->arena[id]), data->champs[i]->code, (size_t)data->champs[i]->size);
         if (add_cursor(data, i, id))
@@ -461,6 +478,29 @@ int main(int argc, char **argv) {
         i++;
     }
     data->cycles_to_die = CYCLE_TO_DIE;
+
+
+    i = 0;
+    ft_putstr("Introducing contestants...\n");
+    while (i < data->pl_count)
+    {
+        ft_putstr("* Player ");
+        ft_putnbr(data->champs[i]->num);
+        ft_putstr(", weighing ");
+        ft_putnbr(data->champs[i]->size);
+        ft_putstr(" bytes, \"");
+        ft_putstr(data->champs[i]->name);
+        ft_putstr("\" (\"");
+        ft_putstr(data->champs[i]->comment);
+        ft_putstr("\") !\n");
+        i++;
+    }
+
+
+
+
+
+
     i = 0;
     int run;
     run = 1;
@@ -509,29 +549,45 @@ int main(int argc, char **argv) {
 //                buffer->op_code = 0;
 //                buffer->cycle_to_op = 0;
             }
-            printf("cycles_to_die = %i live_count = %i  num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", data->cycles_to_die, data->live_count, buffer->number, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
+//            printf("cycles_to_die = %i live_count = %i  num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", data->cycles_to_die, data->live_count, buffer->number, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
             buffer = buffer->next;
             j++;
         }
         if (data->cycle_after_check == data->cycles_to_die || data->cycles_to_die <= 0)
             big_check(data);
-        if (data->flag_dump && data->dump_num == i)
-        {
-            print_buf(data->arena);
-            data_free(data);
-            run = 0;
-        }
         if (data->cursors == NULL)
         {
-            data_free(data);
+//            data_free(data);
             run = 0;
         }
+        if (data->flag_dump && data->dump_num == i && run)
+        {
+            print_buf(data->arena);
+//            data_free(data);
+            run = 0;
+        }
+        if (data->flag_d && data->d_num == i && run)
+        {
+            print_buf2(data->arena);
+//            data_free(data);
+            run = 0;
+        }
+
+
         // delete
 //        if (data->cycle == 204)
 //            printf("HELOO\n");
     }
-    printf("num cycle = %li\n", i);
-    printf("winner = %i\n", data->live_player);
+    int k;
+    k = data->live_player - 1;
+    ft_putstr("Contestant ");
+    ft_putnbr(data->champs[k]->num);
+    ft_putstr(", \"");
+    ft_putstr(data->champs[k]->name);
+    ft_putstr("\", has won !\n");
+    data_free(data);
+//    printf("num cycle = %li\n", i);
+//    printf("winner = %i\n", data->live_player);
 
     return 0;
 }

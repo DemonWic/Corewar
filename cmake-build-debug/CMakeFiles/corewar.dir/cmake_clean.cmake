@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/flag_d.c.o"
+  "CMakeFiles/corewar.dir/flag_d2.c.o"
   "CMakeFiles/corewar.dir/functions.c.o"
   "CMakeFiles/corewar.dir/libft/ft_atoi.c.o"
   "CMakeFiles/corewar.dir/libft/ft_base16_decoder.c.o"

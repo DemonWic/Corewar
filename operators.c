@@ -47,6 +47,7 @@ int   op_ld(t_cursor *cursor, t_init *data)
     cursor->position += 1;
     cursor->position = cor_addr(cursor->position);
     cursor->pc = cursor->position;
+    ft_memdel((void **)&types);
     return (0);
 }
 
@@ -82,11 +83,13 @@ int op_st(t_cursor *cursor, t_init *data)
         ft_color(data, cor_addr(cursor->pc + arg2), REG_SIZE, (cursor->regs[1] * -1));
         ft_unmemcpy2(data, cor_addr(cursor->pc + arg2), num, REG_SIZE);
 //        ft_unmemcpy(&(data->arena[cor_addr(cursor->pc + arg2)]), num, REG_SIZE);
-        free(num);
+        ft_memdel((void **)&num);
+//        free(num);
     }
     cursor->position = cor_addr(cursor->position);
     cursor->pc = cursor->position;
-    free(types);
+    ft_memdel((void **)&types);
+//    free(types);
     return (0);
 }
 
@@ -295,6 +298,7 @@ int op_ldi(t_cursor *cursor, t_init *data)
     }
     cursor->position = cor_addr(cursor->position);
     cursor->pc = cursor->position;
+    ft_memdel((void **)&types);
     return (0);
 }
 
@@ -320,11 +324,13 @@ int op_sti(t_cursor *cursor, t_init *data)
         ft_color(data, addr, REG_SIZE, (cursor->regs[1] * -1));
         ft_unmemcpy2(data, addr, num, REG_SIZE);
 //        ft_unmemcpy(&(data->arena[addr]), num, REG_SIZE);
-        free(num);
+        ft_memdel((void **)&num);
+//        free(num);
     }
     cursor->position = cor_addr(cursor->position);
     cursor->pc = cursor->position;
-    free(types);
+    ft_memdel((void **)&types);
+//    free(types);
     return (0);
 }
 

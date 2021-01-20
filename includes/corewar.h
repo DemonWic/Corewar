@@ -50,6 +50,8 @@ typedef struct      s_init
     int             num;
     int             flag_n; // 0 или число
     int             flag_dump; // 0 или число
+    int             flag_d;
+    int             d_num;
     int             flag_aff; // 0 или 1
     int             dump_num;
     int             flag_vis;
@@ -157,6 +159,8 @@ void	ft_color(t_init *data, int addr, size_t n, int color);
 void	ft_unmemcpy2(t_init *data, int addr, unsigned char *src, size_t n);
 int cor_addr(int num);
 int	code_to_int2(t_init *data, int addr, size_t size);
+char	hex_char(int a);
+void	print_buf2(unsigned char *buf);
 
 #endif //COREWAR_COREWAR_H
 

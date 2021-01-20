@@ -85,6 +85,9 @@
 		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/flag_d.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/flag_d2.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/functions.c">
 			<Option target="corewar"/>
 		</Unit>

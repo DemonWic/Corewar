@@ -150,6 +150,33 @@ flag_d.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/flag_d.c.s
 .PHONY : flag_d.c.s
 
+flag_d2.o: flag_d2.c.o
+
+.PHONY : flag_d2.o
+
+# target to build an object file
+flag_d2.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/flag_d2.c.o
+.PHONY : flag_d2.c.o
+
+flag_d2.i: flag_d2.c.i
+
+.PHONY : flag_d2.i
+
+# target to preprocess a source file
+flag_d2.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/flag_d2.c.i
+.PHONY : flag_d2.c.i
+
+flag_d2.s: flag_d2.c.s
+
+.PHONY : flag_d2.s
+
+# target to generate assembly for a file
+flag_d2.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/flag_d2.c.s
+.PHONY : flag_d2.c.s
+
 functions.o: functions.c.o
 
 .PHONY : functions.o
@@ -2025,6 +2052,9 @@ help:
 	@echo "... flag_d.o"
 	@echo "... flag_d.i"
 	@echo "... flag_d.s"
+	@echo "... flag_d2.o"
+	@echo "... flag_d2.i"
+	@echo "... flag_d2.s"
 	@echo "... functions.o"
 	@echo "... functions.i"
 	@echo "... functions.s"
