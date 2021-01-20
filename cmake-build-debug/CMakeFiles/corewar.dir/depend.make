@@ -224,3 +224,13 @@ CMakeFiles/corewar.dir/operators.c.o: ../includes/libft.h
 CMakeFiles/corewar.dir/operators.c.o: ../includes/op.h
 CMakeFiles/corewar.dir/operators.c.o: ../operators.c
 
+CMakeFiles/corewar.dir/visio2.c.o: ../includes/corewar.h
+CMakeFiles/corewar.dir/visio2.c.o: ../includes/libft.h
+CMakeFiles/corewar.dir/visio2.c.o: ../includes/op.h
+CMakeFiles/corewar.dir/visio2.c.o: ../visio2.c
+
+CMakeFiles/corewar.dir/visio_functions.c.o: ../includes/corewar.h
+CMakeFiles/corewar.dir/visio_functions.c.o: ../includes/libft.h
+CMakeFiles/corewar.dir/visio_functions.c.o: ../includes/op.h
+CMakeFiles/corewar.dir/visio_functions.c.o: ../visio_functions.c
+

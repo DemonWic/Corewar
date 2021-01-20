@@ -11,6 +11,8 @@ libft.h
 ../includes/libft.h
 op.h
 ../includes/op.h
+ncurses.h
+-
 
 ../includes/libft.h
 unistd.h
@@ -28,7 +30,9 @@ stdio.h
 
 ../includes/op.h
 
-/Users/ahintz/CLionProjects/Corewar2/operators.c
+/Users/ahintz/CLionProjects/Corewar2/visio2.c
 corewar.h
 /Users/ahintz/CLionProjects/Corewar2/corewar.h
+ncurses.h
+-
 

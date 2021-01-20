@@ -75,6 +75,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/ahintz/CLionProjects/Corewar2/main.c" "/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/corewar.dir/main.c.o"
   "/Users/ahintz/CLionProjects/Corewar2/op.c" "/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/corewar.dir/op.c.o"
   "/Users/ahintz/CLionProjects/Corewar2/operators.c" "/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/corewar.dir/operators.c.o"
+  "/Users/ahintz/CLionProjects/Corewar2/visio2.c" "/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/corewar.dir/visio2.c.o"
+  "/Users/ahintz/CLionProjects/Corewar2/visio_functions.c" "/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/corewar.dir/visio_functions.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

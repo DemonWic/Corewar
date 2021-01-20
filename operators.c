@@ -522,5 +522,6 @@ int op_live(t_cursor *cursor, t_init *data)
     }
     cursor->position = cor_addr(cursor->position);
     cursor->pc = cursor->position;
+    data->champs[data->live_player - 1]->visio_last_live = data->cycle;
     return (0);
 }

@@ -7,6 +7,10 @@
 
 #include "libft.h"
 #include "op.h"
+#include <ncurses.h>
+
+# define VISIO_LINE 64
+# define VISIO_LIMIT 50
 
 
 typedef struct s_cursor
@@ -32,6 +36,7 @@ typedef struct		s_champ
     char			name[PROG_NAME_LENGTH];
     char			comment[COMMENT_LENGTH];
     int				size;
+    int             visio_last_live;
     unsigned char   *code;
 }					t_champ;
 
@@ -72,6 +77,8 @@ typedef struct      s_init
 
     unsigned char   arena[MEM_SIZE];
     unsigned char   col_arena[MEM_SIZE];
+    unsigned char   st_arena[MEM_SIZE];
+    unsigned char   l_arena[MEM_SIZE];
 
     t_cursor        *cursors;
     int             cursors_count;
@@ -92,6 +99,26 @@ typedef struct s_op
     int dir;
     int (*func) (t_cursor *, t_init *);
 }               t_op;
+
+
+// dlya visio
+typedef struct		s_cell
+{
+    unsigned char	c;
+    int		player;
+    int		car;
+    int		if_st;
+    int		if_live;
+}			t_cell;
+
+typedef struct		s_vdata
+{
+    struct s_cell	buf[MEM_SIZE];
+    struct s_cell	old_buf[MEM_SIZE];
+    int             run_status;
+    WINDOW	        *win1;
+    WINDOW	        *win2;
+}			t_vdata;
 
 int op_live(t_cursor *cursor, t_init *data);
 int op_aff(t_cursor *cursor, t_init *data);
@@ -159,8 +186,21 @@ void	ft_color(t_init *data, int addr, size_t n, int color);
 void	ft_unmemcpy2(t_init *data, int addr, unsigned char *src, size_t n);
 int cor_addr(int num);
 int	code_to_int2(t_init *data, int addr, size_t size);
-char	hex_char(int a);
 void	print_buf2(unsigned char *buf);
+
+// visio
+void	put_data(t_vdata *data, int start_line, WINDOW *win1);
+void	update_data(t_vdata *data, int start_line, WINDOW *win1);
+void	put_attrs(t_init *data, WINDOW *win2);
+void	update_attrs(t_init *data, WINDOW *win2);
+void	start_visio(t_vdata *vdata);
+void	end_visio(t_vdata *vdata);
+void	create_cells(t_vdata *vdata, t_init *data);
+void	update_cells(t_vdata *vdata, t_init *data);
+char	hex_char(int a);
+void	begin_visio(t_init *data, t_vdata *vdata);
+void	run_visio(t_vdata *vdata);
+void	update_visio(t_init *data, t_vdata *vdata);
 
 #endif //COREWAR_COREWAR_H
 

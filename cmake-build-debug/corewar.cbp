@@ -310,6 +310,12 @@
 		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/operators.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/visio2.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/visio_functions.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

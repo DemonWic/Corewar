@@ -70,6 +70,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/main.c.o"
   "CMakeFiles/corewar.dir/op.c.o"
   "CMakeFiles/corewar.dir/operators.c.o"
+  "CMakeFiles/corewar.dir/visio2.c.o"
+  "CMakeFiles/corewar.dir/visio_functions.c.o"
   "corewar"
   "corewar.pdb"
 )

@@ -2040,6 +2040,60 @@ operators.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/operators.c.s
 .PHONY : operators.c.s
 
+visio2.o: visio2.c.o
+
+.PHONY : visio2.o
+
+# target to build an object file
+visio2.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio2.c.o
+.PHONY : visio2.c.o
+
+visio2.i: visio2.c.i
+
+.PHONY : visio2.i
+
+# target to preprocess a source file
+visio2.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio2.c.i
+.PHONY : visio2.c.i
+
+visio2.s: visio2.c.s
+
+.PHONY : visio2.s
+
+# target to generate assembly for a file
+visio2.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio2.c.s
+.PHONY : visio2.c.s
+
+visio_functions.o: visio_functions.c.o
+
+.PHONY : visio_functions.o
+
+# target to build an object file
+visio_functions.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_functions.c.o
+.PHONY : visio_functions.c.o
+
+visio_functions.i: visio_functions.c.i
+
+.PHONY : visio_functions.i
+
+# target to preprocess a source file
+visio_functions.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_functions.c.i
+.PHONY : visio_functions.c.i
+
+visio_functions.s: visio_functions.c.s
+
+.PHONY : visio_functions.s
+
+# target to generate assembly for a file
+visio_functions.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_functions.c.s
+.PHONY : visio_functions.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2262,6 +2316,12 @@ help:
 	@echo "... operators.o"
 	@echo "... operators.i"
 	@echo "... operators.s"
+	@echo "... visio2.o"
+	@echo "... visio2.i"
+	@echo "... visio2.s"
+	@echo "... visio_functions.o"
+	@echo "... visio_functions.i"
+	@echo "... visio_functions.s"
 .PHONY : help
 
 

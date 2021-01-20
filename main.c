@@ -414,6 +414,7 @@ int main(int argc, char **argv) {
     int j;
     int buf;
     t_init *data;
+    t_vdata *vdata;
 
     i = 1;
     j = 0;
@@ -465,6 +466,7 @@ int main(int argc, char **argv) {
     while (i < data->pl_count)
     {
         id = i * delta;
+        data->champs[i]->visio_last_live = 0;
         ft_color(data, id, (size_t)data->champs[i]->size, i + 1);
         ft_unmemcpy2(data, id, data->champs[i]->code, (size_t)data->champs[i]->size);
 //        ft_unmemcpy(&(data->arena[id]), data->champs[i]->code, (size_t)data->champs[i]->size);
@@ -505,6 +507,14 @@ int main(int argc, char **argv) {
     int run;
     run = 1;
     t_cursor *buffer;
+
+    // start visio /TODO
+    if (data->flag_vis)
+    {
+        vdata = (t_vdata*)malloc(sizeof(t_vdata));
+        begin_visio(data, vdata);
+    }
+
     while(run)
     {
         data->cycle++;
@@ -572,19 +582,27 @@ int main(int argc, char **argv) {
 //            data_free(data);
             run = 0;
         }
+        // update visio /TODO
+        if (data->flag_vis)
+            update_visio(data, vdata);
 
 
         // delete
 //        if (data->cycle == 204)
 //            printf("HELOO\n");
     }
-    int k;
-    k = data->live_player - 1;
-    ft_putstr("Contestant ");
-    ft_putnbr(data->champs[k]->num);
-    ft_putstr(", \"");
-    ft_putstr(data->champs[k]->name);
-    ft_putstr("\", has won !\n");
+    if (data->flag_vis)
+        end_visio(vdata);
+    if (!(data->flag_vis || data->flag_d || data->flag_dump))
+    {
+        int k;
+        k = data->live_player - 1;
+        ft_putstr("Contestant ");
+        ft_putnbr(data->champs[k]->num);
+        ft_putstr(", \"");
+        ft_putstr(data->champs[k]->name);
+        ft_putstr("\", has won !\n");
+    }
     data_free(data);
 //    printf("num cycle = %li\n", i);
 //    printf("winner = %i\n", data->live_player);
