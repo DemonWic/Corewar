@@ -505,6 +505,8 @@ int main(int argc, char **argv) {
 
     i = 0;
     int run;
+    int check;
+    check = 0;
     run = 1;
     t_cursor *buffer;
 
@@ -517,6 +519,20 @@ int main(int argc, char **argv) {
 
     while(run)
     {
+        if (data->flag_dump && data->dump_num == i && run)
+        {
+            print_buf(data->arena);
+            check = 1;
+//            data_free(data);
+            run = 0;
+        }
+        if (data->flag_d && data->d_num == i && run)
+        {
+            print_buf2(data->arena);
+            check = 1;
+//            data_free(data);
+            run = 0;
+        }
         data->cycle++;
         data->cycle_after_check++;
         i++;
@@ -559,7 +575,7 @@ int main(int argc, char **argv) {
 //                buffer->op_code = 0;
 //                buffer->cycle_to_op = 0;
             }
-//            printf("cycles_to_die = %i live_count = %i  num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", data->cycles_to_die, data->live_count, buffer->number, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
+            printf("cycles_to_die = %i live_count = %i  num = %i opcode = %i cycle = %li cursor->pc = %i cycle_to_op = %i\n", data->cycles_to_die, data->live_count, buffer->number, buffer->op_code, data->cycle, buffer->pc, buffer->cycle_to_op);
             buffer = buffer->next;
             j++;
         }
@@ -567,18 +583,6 @@ int main(int argc, char **argv) {
             big_check(data);
         if (data->cursors == NULL)
         {
-//            data_free(data);
-            run = 0;
-        }
-        if (data->flag_dump && data->dump_num == i && run)
-        {
-            print_buf(data->arena);
-//            data_free(data);
-            run = 0;
-        }
-        if (data->flag_d && data->d_num == i && run)
-        {
-            print_buf2(data->arena);
 //            data_free(data);
             run = 0;
         }
@@ -593,7 +597,7 @@ int main(int argc, char **argv) {
     }
     if (data->flag_vis)
         end_visio(vdata);
-    if (!(data->flag_vis || data->flag_d || data->flag_dump))
+    if (!(data->flag_vis || check))
     {
         int k;
         k = data->live_player - 1;

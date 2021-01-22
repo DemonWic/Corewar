@@ -30,9 +30,9 @@ stdio.h
 
 ../includes/op.h
 
-/Users/ahintz/CLionProjects/Corewar2/visio2.c
+/Users/ahintz/CLionProjects/Corewar2/main.c
+stdio.h
+-
 corewar.h
 /Users/ahintz/CLionProjects/Corewar2/corewar.h
-ncurses.h
--
 

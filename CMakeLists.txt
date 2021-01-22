@@ -75,3 +75,5 @@ add_executable(corewar libft/ft_atoi.c
         includes/libft.h
         includes/op.h
         includes/corewar.h main.c functions.c flag_d.c op.c operators.c flag_d2.c visio2.c visio_functions.c)
+
+target_link_libraries(${PROJECT_NAME} ncurses)
