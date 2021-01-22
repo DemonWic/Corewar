@@ -6,5 +6,5 @@ C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk 
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/ahintz/CLionProjects/Corewar2/libft, -I/Users/ahintz/CLionProjects/Corewar2/includes 
+C_INCLUDES = -I/Users/ahintz/Downloads/Corewar7/libft, -I/Users/ahintz/Downloads/Corewar7/includes 
 

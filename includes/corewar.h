@@ -8,6 +8,7 @@
 #include "libft.h"
 #include "op.h"
 #include <ncurses.h>
+#include <errno.h>
 
 # define VISIO_LINE 64
 # define VISIO_LIMIT 50
@@ -83,6 +84,7 @@ typedef struct      s_init
     t_cursor        *cursors;
     int             cursors_count;
     int             cursor_num;
+    int             print_win;
 
 }                   t_init;
 
@@ -185,8 +187,28 @@ unsigned char *int_to_code(int num);
 void	ft_color(t_init *data, int addr, size_t n, int color);
 void	ft_unmemcpy2(t_init *data, int addr, unsigned char *src, size_t n);
 int cor_addr(int num);
-int	code_to_int2(t_init *data, int addr, size_t size);
+int	code_to_int2(t_init *data, int addr, int size);
 void	print_buf2(unsigned char *buf);
+int check_errors2(t_init *data, int num);
+int get_value(int type, t_cursor *cursor, t_init *data);
+int    validation(int argc, char **argv, t_init *data);
+int validation3(int a[5], char **argv, t_init *data);
+void validation4(int a[5], char **argv, t_init *data);
+void validation5(int a[5], char **argv, t_init *data);
+void data_free(t_init *data);
+int read_champ(t_init *data);
+void big_check(t_init *data);
+int add_cursor(t_init *data, int champ, int arena_id);
+void sort_champs(t_init *data);
+void update_cur(t_init *data, t_cursor *cursor);
+int check_args_types(t_init *data, t_cursor *cursor);
+void    pres_champ(t_init *data);
+void    put_winner(t_init *data);
+int load_arena(t_init *data);
+void    cor_num_champ(t_init *data);
+void    execute(t_init *data);
+void    cursors_exec(t_init *data);
+
 
 // visio
 void	put_data(t_vdata *data, int start_line, WINDOW *win1);
@@ -201,6 +223,7 @@ char	hex_char(int a);
 void	begin_visio(t_init *data, t_vdata *vdata);
 void	run_visio(t_vdata *vdata);
 void	update_visio(t_init *data, t_vdata *vdata);
+void	v_colors();
 
 #endif //COREWAR_COREWAR_H
 

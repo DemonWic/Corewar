@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ahintz/CLionProjects/Corewar2
+CMAKE_SOURCE_DIR = /Users/ahintz/Downloads/Corewar7
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ahintz/CLionProjects/Corewar2/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ahintz/Downloads/Corewar7/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles /Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles /Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -150,33 +150,6 @@ flag_d.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/flag_d.c.s
 .PHONY : flag_d.c.s
 
-flag_d2.o: flag_d2.c.o
-
-.PHONY : flag_d2.o
-
-# target to build an object file
-flag_d2.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/flag_d2.c.o
-.PHONY : flag_d2.c.o
-
-flag_d2.i: flag_d2.c.i
-
-.PHONY : flag_d2.i
-
-# target to preprocess a source file
-flag_d2.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/flag_d2.c.i
-.PHONY : flag_d2.c.i
-
-flag_d2.s: flag_d2.c.s
-
-.PHONY : flag_d2.s
-
-# target to generate assembly for a file
-flag_d2.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/flag_d2.c.s
-.PHONY : flag_d2.c.s
-
 functions.o: functions.c.o
 
 .PHONY : functions.o
@@ -203,6 +176,87 @@ functions.s: functions.c.s
 functions.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions.c.s
 .PHONY : functions.c.s
+
+functions2.o: functions2.c.o
+
+.PHONY : functions2.o
+
+# target to build an object file
+functions2.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions2.c.o
+.PHONY : functions2.c.o
+
+functions2.i: functions2.c.i
+
+.PHONY : functions2.i
+
+# target to preprocess a source file
+functions2.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions2.c.i
+.PHONY : functions2.c.i
+
+functions2.s: functions2.c.s
+
+.PHONY : functions2.s
+
+# target to generate assembly for a file
+functions2.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions2.c.s
+.PHONY : functions2.c.s
+
+functions3.o: functions3.c.o
+
+.PHONY : functions3.o
+
+# target to build an object file
+functions3.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions3.c.o
+.PHONY : functions3.c.o
+
+functions3.i: functions3.c.i
+
+.PHONY : functions3.i
+
+# target to preprocess a source file
+functions3.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions3.c.i
+.PHONY : functions3.c.i
+
+functions3.s: functions3.c.s
+
+.PHONY : functions3.s
+
+# target to generate assembly for a file
+functions3.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions3.c.s
+.PHONY : functions3.c.s
+
+functions4.o: functions4.c.o
+
+.PHONY : functions4.o
+
+# target to build an object file
+functions4.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions4.c.o
+.PHONY : functions4.c.o
+
+functions4.i: functions4.c.i
+
+.PHONY : functions4.i
+
+# target to preprocess a source file
+functions4.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions4.c.i
+.PHONY : functions4.c.i
+
+functions4.s: functions4.c.s
+
+.PHONY : functions4.s
+
+# target to generate assembly for a file
+functions4.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/functions4.c.s
+.PHONY : functions4.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -1986,6 +2040,60 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main.c.s
 .PHONY : main.c.s
 
+main_functions.o: main_functions.c.o
+
+.PHONY : main_functions.o
+
+# target to build an object file
+main_functions.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions.c.o
+.PHONY : main_functions.c.o
+
+main_functions.i: main_functions.c.i
+
+.PHONY : main_functions.i
+
+# target to preprocess a source file
+main_functions.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions.c.i
+.PHONY : main_functions.c.i
+
+main_functions.s: main_functions.c.s
+
+.PHONY : main_functions.s
+
+# target to generate assembly for a file
+main_functions.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions.c.s
+.PHONY : main_functions.c.s
+
+main_functions2.o: main_functions2.c.o
+
+.PHONY : main_functions2.o
+
+# target to build an object file
+main_functions2.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions2.c.o
+.PHONY : main_functions2.c.o
+
+main_functions2.i: main_functions2.c.i
+
+.PHONY : main_functions2.i
+
+# target to preprocess a source file
+main_functions2.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions2.c.i
+.PHONY : main_functions2.c.i
+
+main_functions2.s: main_functions2.c.s
+
+.PHONY : main_functions2.s
+
+# target to generate assembly for a file
+main_functions2.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions2.c.s
+.PHONY : main_functions2.c.s
+
 op.o: op.c.o
 
 .PHONY : op.o
@@ -2013,86 +2121,383 @@ op.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op.c.s
 .PHONY : op.c.s
 
-operators.o: operators.c.o
+op_add_sub_zjmp_ldi_sti.o: op_add_sub_zjmp_ldi_sti.c.o
 
-.PHONY : operators.o
-
-# target to build an object file
-operators.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/operators.c.o
-.PHONY : operators.c.o
-
-operators.i: operators.c.i
-
-.PHONY : operators.i
-
-# target to preprocess a source file
-operators.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/operators.c.i
-.PHONY : operators.c.i
-
-operators.s: operators.c.s
-
-.PHONY : operators.s
-
-# target to generate assembly for a file
-operators.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/operators.c.s
-.PHONY : operators.c.s
-
-visio2.o: visio2.c.o
-
-.PHONY : visio2.o
+.PHONY : op_add_sub_zjmp_ldi_sti.o
 
 # target to build an object file
-visio2.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio2.c.o
-.PHONY : visio2.c.o
+op_add_sub_zjmp_ldi_sti.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_add_sub_zjmp_ldi_sti.c.o
+.PHONY : op_add_sub_zjmp_ldi_sti.c.o
 
-visio2.i: visio2.c.i
+op_add_sub_zjmp_ldi_sti.i: op_add_sub_zjmp_ldi_sti.c.i
 
-.PHONY : visio2.i
+.PHONY : op_add_sub_zjmp_ldi_sti.i
 
 # target to preprocess a source file
-visio2.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio2.c.i
-.PHONY : visio2.c.i
+op_add_sub_zjmp_ldi_sti.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_add_sub_zjmp_ldi_sti.c.i
+.PHONY : op_add_sub_zjmp_ldi_sti.c.i
 
-visio2.s: visio2.c.s
+op_add_sub_zjmp_ldi_sti.s: op_add_sub_zjmp_ldi_sti.c.s
 
-.PHONY : visio2.s
+.PHONY : op_add_sub_zjmp_ldi_sti.s
 
 # target to generate assembly for a file
-visio2.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio2.c.s
-.PHONY : visio2.c.s
+op_add_sub_zjmp_ldi_sti.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_add_sub_zjmp_ldi_sti.c.s
+.PHONY : op_add_sub_zjmp_ldi_sti.c.s
 
-visio_functions.o: visio_functions.c.o
+op_addr_ld_st.o: op_addr_ld_st.c.o
 
-.PHONY : visio_functions.o
+.PHONY : op_addr_ld_st.o
 
 # target to build an object file
-visio_functions.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_functions.c.o
-.PHONY : visio_functions.c.o
+op_addr_ld_st.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_addr_ld_st.c.o
+.PHONY : op_addr_ld_st.c.o
 
-visio_functions.i: visio_functions.c.i
+op_addr_ld_st.i: op_addr_ld_st.c.i
 
-.PHONY : visio_functions.i
+.PHONY : op_addr_ld_st.i
 
 # target to preprocess a source file
-visio_functions.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_functions.c.i
-.PHONY : visio_functions.c.i
+op_addr_ld_st.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_addr_ld_st.c.i
+.PHONY : op_addr_ld_st.c.i
 
-visio_functions.s: visio_functions.c.s
+op_addr_ld_st.s: op_addr_ld_st.c.s
 
-.PHONY : visio_functions.s
+.PHONY : op_addr_ld_st.s
 
 # target to generate assembly for a file
-visio_functions.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_functions.c.s
-.PHONY : visio_functions.c.s
+op_addr_ld_st.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_addr_ld_st.c.s
+.PHONY : op_addr_ld_st.c.s
+
+op_and_or_xor.o: op_and_or_xor.c.o
+
+.PHONY : op_and_or_xor.o
+
+# target to build an object file
+op_and_or_xor.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_and_or_xor.c.o
+.PHONY : op_and_or_xor.c.o
+
+op_and_or_xor.i: op_and_or_xor.c.i
+
+.PHONY : op_and_or_xor.i
+
+# target to preprocess a source file
+op_and_or_xor.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_and_or_xor.c.i
+.PHONY : op_and_or_xor.c.i
+
+op_and_or_xor.s: op_and_or_xor.c.s
+
+.PHONY : op_and_or_xor.s
+
+# target to generate assembly for a file
+op_and_or_xor.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_and_or_xor.c.s
+.PHONY : op_and_or_xor.c.s
+
+op_fork_lld_lldi.o: op_fork_lld_lldi.c.o
+
+.PHONY : op_fork_lld_lldi.o
+
+# target to build an object file
+op_fork_lld_lldi.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_fork_lld_lldi.c.o
+.PHONY : op_fork_lld_lldi.c.o
+
+op_fork_lld_lldi.i: op_fork_lld_lldi.c.i
+
+.PHONY : op_fork_lld_lldi.i
+
+# target to preprocess a source file
+op_fork_lld_lldi.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_fork_lld_lldi.c.i
+.PHONY : op_fork_lld_lldi.c.i
+
+op_fork_lld_lldi.s: op_fork_lld_lldi.c.s
+
+.PHONY : op_fork_lld_lldi.s
+
+# target to generate assembly for a file
+op_fork_lld_lldi.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_fork_lld_lldi.c.s
+.PHONY : op_fork_lld_lldi.c.s
+
+op_lfork_aff_live.o: op_lfork_aff_live.c.o
+
+.PHONY : op_lfork_aff_live.o
+
+# target to build an object file
+op_lfork_aff_live.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_lfork_aff_live.c.o
+.PHONY : op_lfork_aff_live.c.o
+
+op_lfork_aff_live.i: op_lfork_aff_live.c.i
+
+.PHONY : op_lfork_aff_live.i
+
+# target to preprocess a source file
+op_lfork_aff_live.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_lfork_aff_live.c.i
+.PHONY : op_lfork_aff_live.c.i
+
+op_lfork_aff_live.s: op_lfork_aff_live.c.s
+
+.PHONY : op_lfork_aff_live.s
+
+# target to generate assembly for a file
+op_lfork_aff_live.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op_lfork_aff_live.c.s
+.PHONY : op_lfork_aff_live.c.s
+
+read_champ.o: read_champ.c.o
+
+.PHONY : read_champ.o
+
+# target to build an object file
+read_champ.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/read_champ.c.o
+.PHONY : read_champ.c.o
+
+read_champ.i: read_champ.c.i
+
+.PHONY : read_champ.i
+
+# target to preprocess a source file
+read_champ.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/read_champ.c.i
+.PHONY : read_champ.c.i
+
+read_champ.s: read_champ.c.s
+
+.PHONY : read_champ.s
+
+# target to generate assembly for a file
+read_champ.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/read_champ.c.s
+.PHONY : read_champ.c.s
+
+validation.o: validation.c.o
+
+.PHONY : validation.o
+
+# target to build an object file
+validation.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/validation.c.o
+.PHONY : validation.c.o
+
+validation.i: validation.c.i
+
+.PHONY : validation.i
+
+# target to preprocess a source file
+validation.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/validation.c.i
+.PHONY : validation.c.i
+
+validation.s: validation.c.s
+
+.PHONY : validation.s
+
+# target to generate assembly for a file
+validation.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/validation.c.s
+.PHONY : validation.c.s
+
+validation2.o: validation2.c.o
+
+.PHONY : validation2.o
+
+# target to build an object file
+validation2.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/validation2.c.o
+.PHONY : validation2.c.o
+
+validation2.i: validation2.c.i
+
+.PHONY : validation2.i
+
+# target to preprocess a source file
+validation2.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/validation2.c.i
+.PHONY : validation2.c.i
+
+validation2.s: validation2.c.s
+
+.PHONY : validation2.s
+
+# target to generate assembly for a file
+validation2.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/validation2.c.s
+.PHONY : validation2.c.s
+
+visio.o: visio.c.o
+
+.PHONY : visio.o
+
+# target to build an object file
+visio.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio.c.o
+.PHONY : visio.c.o
+
+visio.i: visio.c.i
+
+.PHONY : visio.i
+
+# target to preprocess a source file
+visio.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio.c.i
+.PHONY : visio.c.i
+
+visio.s: visio.c.s
+
+.PHONY : visio.s
+
+# target to generate assembly for a file
+visio.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio.c.s
+.PHONY : visio.c.s
+
+visio_cells.o: visio_cells.c.o
+
+.PHONY : visio_cells.o
+
+# target to build an object file
+visio_cells.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_cells.c.o
+.PHONY : visio_cells.c.o
+
+visio_cells.i: visio_cells.c.i
+
+.PHONY : visio_cells.i
+
+# target to preprocess a source file
+visio_cells.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_cells.c.i
+.PHONY : visio_cells.c.i
+
+visio_cells.s: visio_cells.c.s
+
+.PHONY : visio_cells.s
+
+# target to generate assembly for a file
+visio_cells.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_cells.c.s
+.PHONY : visio_cells.c.s
+
+visio_put_attrs.o: visio_put_attrs.c.o
+
+.PHONY : visio_put_attrs.o
+
+# target to build an object file
+visio_put_attrs.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_put_attrs.c.o
+.PHONY : visio_put_attrs.c.o
+
+visio_put_attrs.i: visio_put_attrs.c.i
+
+.PHONY : visio_put_attrs.i
+
+# target to preprocess a source file
+visio_put_attrs.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_put_attrs.c.i
+.PHONY : visio_put_attrs.c.i
+
+visio_put_attrs.s: visio_put_attrs.c.s
+
+.PHONY : visio_put_attrs.s
+
+# target to generate assembly for a file
+visio_put_attrs.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_put_attrs.c.s
+.PHONY : visio_put_attrs.c.s
+
+visio_put_data.o: visio_put_data.c.o
+
+.PHONY : visio_put_data.o
+
+# target to build an object file
+visio_put_data.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_put_data.c.o
+.PHONY : visio_put_data.c.o
+
+visio_put_data.i: visio_put_data.c.i
+
+.PHONY : visio_put_data.i
+
+# target to preprocess a source file
+visio_put_data.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_put_data.c.i
+.PHONY : visio_put_data.c.i
+
+visio_put_data.s: visio_put_data.c.s
+
+.PHONY : visio_put_data.s
+
+# target to generate assembly for a file
+visio_put_data.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_put_data.c.s
+.PHONY : visio_put_data.c.s
+
+visio_update_attrs.o: visio_update_attrs.c.o
+
+.PHONY : visio_update_attrs.o
+
+# target to build an object file
+visio_update_attrs.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_update_attrs.c.o
+.PHONY : visio_update_attrs.c.o
+
+visio_update_attrs.i: visio_update_attrs.c.i
+
+.PHONY : visio_update_attrs.i
+
+# target to preprocess a source file
+visio_update_attrs.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_update_attrs.c.i
+.PHONY : visio_update_attrs.c.i
+
+visio_update_attrs.s: visio_update_attrs.c.s
+
+.PHONY : visio_update_attrs.s
+
+# target to generate assembly for a file
+visio_update_attrs.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_update_attrs.c.s
+.PHONY : visio_update_attrs.c.s
+
+visio_update_data.o: visio_update_data.c.o
+
+.PHONY : visio_update_data.o
+
+# target to build an object file
+visio_update_data.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_update_data.c.o
+.PHONY : visio_update_data.c.o
+
+visio_update_data.i: visio_update_data.c.i
+
+.PHONY : visio_update_data.i
+
+# target to preprocess a source file
+visio_update_data.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_update_data.c.i
+.PHONY : visio_update_data.c.i
+
+visio_update_data.s: visio_update_data.c.s
+
+.PHONY : visio_update_data.s
+
+# target to generate assembly for a file
+visio_update_data.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/visio_update_data.c.s
+.PHONY : visio_update_data.c.s
 
 # Help Target
 help:
@@ -2106,12 +2511,18 @@ help:
 	@echo "... flag_d.o"
 	@echo "... flag_d.i"
 	@echo "... flag_d.s"
-	@echo "... flag_d2.o"
-	@echo "... flag_d2.i"
-	@echo "... flag_d2.s"
 	@echo "... functions.o"
 	@echo "... functions.i"
 	@echo "... functions.s"
+	@echo "... functions2.o"
+	@echo "... functions2.i"
+	@echo "... functions2.s"
+	@echo "... functions3.o"
+	@echo "... functions3.i"
+	@echo "... functions3.s"
+	@echo "... functions4.o"
+	@echo "... functions4.i"
+	@echo "... functions4.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
@@ -2310,18 +2721,57 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... main_functions.o"
+	@echo "... main_functions.i"
+	@echo "... main_functions.s"
+	@echo "... main_functions2.o"
+	@echo "... main_functions2.i"
+	@echo "... main_functions2.s"
 	@echo "... op.o"
 	@echo "... op.i"
 	@echo "... op.s"
-	@echo "... operators.o"
-	@echo "... operators.i"
-	@echo "... operators.s"
-	@echo "... visio2.o"
-	@echo "... visio2.i"
-	@echo "... visio2.s"
-	@echo "... visio_functions.o"
-	@echo "... visio_functions.i"
-	@echo "... visio_functions.s"
+	@echo "... op_add_sub_zjmp_ldi_sti.o"
+	@echo "... op_add_sub_zjmp_ldi_sti.i"
+	@echo "... op_add_sub_zjmp_ldi_sti.s"
+	@echo "... op_addr_ld_st.o"
+	@echo "... op_addr_ld_st.i"
+	@echo "... op_addr_ld_st.s"
+	@echo "... op_and_or_xor.o"
+	@echo "... op_and_or_xor.i"
+	@echo "... op_and_or_xor.s"
+	@echo "... op_fork_lld_lldi.o"
+	@echo "... op_fork_lld_lldi.i"
+	@echo "... op_fork_lld_lldi.s"
+	@echo "... op_lfork_aff_live.o"
+	@echo "... op_lfork_aff_live.i"
+	@echo "... op_lfork_aff_live.s"
+	@echo "... read_champ.o"
+	@echo "... read_champ.i"
+	@echo "... read_champ.s"
+	@echo "... validation.o"
+	@echo "... validation.i"
+	@echo "... validation.s"
+	@echo "... validation2.o"
+	@echo "... validation2.i"
+	@echo "... validation2.s"
+	@echo "... visio.o"
+	@echo "... visio.i"
+	@echo "... visio.s"
+	@echo "... visio_cells.o"
+	@echo "... visio_cells.i"
+	@echo "... visio_cells.s"
+	@echo "... visio_put_attrs.o"
+	@echo "... visio_put_attrs.i"
+	@echo "... visio_put_attrs.s"
+	@echo "... visio_put_data.o"
+	@echo "... visio_put_data.i"
+	@echo "... visio_put_data.s"
+	@echo "... visio_update_attrs.o"
+	@echo "... visio_update_attrs.i"
+	@echo "... visio_update_attrs.s"
+	@echo "... visio_update_data.o"
+	@echo "... visio_update_data.i"
+	@echo "... visio_update_data.s"
 .PHONY : help
 
 

@@ -74,6 +74,29 @@ add_executable(corewar libft/ft_atoi.c
         includes/lemin.h
         includes/libft.h
         includes/op.h
-        includes/corewar.h main.c functions.c flag_d.c op.c operators.c flag_d2.c visio2.c visio_functions.c)
+        includes/corewar.h
+        main.c
+        functions.c
+        flag_d.c
+        op.c
+        visio_put_data.c
+        visio_cells.c
+        functions2.c
+        functions3.c
+        functions4.c
+        op_addr_ld_st.c
+        op_and_or_xor.c
+        op_add_sub_zjmp_ldi_sti.c
+        op_fork_lld_lldi.c
+        op_lfork_aff_live.c
+        validation.c
+        validation2.c
+        read_champ.c
+        main_functions.c
+        main_functions2.c
+        visio.c
+        visio_update_attrs.c
+        visio_update_data.c
+        visio_put_attrs.c)
 
 target_link_libraries(${PROJECT_NAME} ncurses)

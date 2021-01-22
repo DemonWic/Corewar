@@ -8,44 +8,44 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug"/>
+				<Option working_dir="/Users/ahintz/Downloads/Corewar7/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug"/>
+				<Option working_dir="/Users/ahintz/Downloads/Corewar7/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug"/>
+				<Option working_dir="/Users/ahintz/Downloads/Corewar7/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="corewar">
-				<Option output="/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/corewar" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug"/>
+				<Option output="/Users/ahintz/Downloads/Corewar7/cmake-build-debug/corewar" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ahintz/Downloads/Corewar7/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/ahintz/CLionProjects/Corewar2/libft,"/>
-					<Add directory="/Users/ahintz/CLionProjects/Corewar2/includes"/>
+					<Add directory="/Users/ahintz/Downloads/Corewar7/libft,"/>
+					<Add directory="/Users/ahintz/Downloads/Corewar7/includes"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -53,21 +53,21 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 corewar"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 corewar"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="corewar/fast">
-				<Option output="/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/corewar" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug"/>
+				<Option output="/Users/ahintz/Downloads/Corewar7/cmake-build-debug/corewar" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ahintz/Downloads/Corewar7/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/ahintz/CLionProjects/Corewar2/libft,"/>
-					<Add directory="/Users/ahintz/CLionProjects/Corewar2/includes"/>
+					<Add directory="/Users/ahintz/Downloads/Corewar7/libft,"/>
+					<Add directory="/Users/ahintz/Downloads/Corewar7/includes"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -75,248 +75,293 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 corewar/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/CLionProjects/Corewar2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 corewar/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ahintz/Downloads/Corewar7/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/flag_d.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/flag_d.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/flag_d2.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/functions.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/functions.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/functions2.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/includes/corewar.h">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/functions3.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/includes/lemin.h">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/functions4.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/includes/libft.h">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/includes/corewar.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/includes/op.h">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/includes/lemin.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_atoi.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/includes/libft.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_base16_decoder.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/includes/op.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_base16_encoder.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_atoi.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_bzero.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_base16_decoder.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_free_str.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_base16_encoder.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_isalnum.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_bzero.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_isalpha.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_free_str.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_isascii.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_isalnum.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_isdigit.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_isalpha.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_isprint.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_isascii.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_itoa.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_isdigit.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_lstadd.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_isprint.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_lstdel.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_itoa.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_lstdelone.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_lstadd.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_lstiter.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_lstdel.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_lstmap.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_lstdelone.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_lstnew.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_lstiter.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_memalloc.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_lstmap.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_memccpy.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_lstnew.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_memchr.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_memalloc.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_memcmp.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_memccpy.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_memcpy.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_memchr.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_memdel.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_memcmp.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_memmove.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_memcpy.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_memset.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_memdel.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_pow.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_memmove.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_putchar.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_memset.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_putchar_fd.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_pow.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_putendl.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_putchar.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_putendl_fd.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_putchar_fd.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_putnbr.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_putendl.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_putnbr_fd.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_putendl_fd.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_putstr.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_putnbr.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_putstr_fd.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_putnbr_fd.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_rot_n.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_putstr.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_sqrt.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_putstr_fd.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strcat.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_rot_n.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strchr.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_sqrt.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strclr.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strcat.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strcmp.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strchr.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strcpy.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strclr.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strdel.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strcmp.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strdup.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strcpy.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strequ.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strdel.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_striter.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strdup.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_striteri.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strequ.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strjoin.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_striter.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strlcat.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_striteri.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strlen.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strjoin.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strmap.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strlcat.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strmapi.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strlen.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strncat.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strmap.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strncmp.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strmapi.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strncpy.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strncat.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strnequ.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strncmp.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strnew.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strncpy.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strnstr.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strnequ.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strrchr.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strnew.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strsplit.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strnstr.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strstr.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strrchr.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strsub.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strsplit.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_strtrim.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strstr.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_tolower.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strsub.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/ft_toupper.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_strtrim.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/get_next_line.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_tolower.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/libft/libft.h">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/ft_toupper.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/main.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/get_next_line.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/op.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/libft/libft.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/operators.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/main.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/visio2.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/main_functions.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/visio_functions.c">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/main_functions2.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/Users/ahintz/CLionProjects/Corewar2/CMakeLists.txt">
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/op.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/op_add_sub_zjmp_ldi_sti.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/op_addr_ld_st.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/op_and_or_xor.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/op_fork_lld_lldi.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/op_lfork_aff_live.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/read_champ.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/validation.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/validation2.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/visio.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/visio_cells.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/visio_put_attrs.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/visio_put_data.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/visio_update_attrs.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/visio_update_data.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
