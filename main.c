@@ -169,42 +169,47 @@ void    cor_num_champ(t_init *data)
     }
 }
 
+int error_help(t_init *data)
+{
+    print_help();
+    data_free(data);
+    return (1);
+}
+
+int valid_read(int argc, char **argv, t_init *data)
+{
+    pre_valid(argc, argv, data);
+    if (data->pl_count > MAX_PLAYERS)
+    {
+        error_many_champ();
+        data_free(data);
+        return (1);
+    }
+    else if (data->error.help == 1)
+        return (error_help(data));
+    if (validation(argc, argv, data))
+        return (1);
+    if (data->error.help == 1)
+        return (error_help(data));
+    cor_num_champ(data);
+    if (read_champ(data))
+    {
+        data_free(data);
+        return(1);
+    }
+    return (0);
+}
+
 int main(int argc, char **argv)
 {
 	t_init *data;
 
     if (argc < 2)
         print_help();
-//	data = init_data();
 	if ((data = init_data())== NULL)
 		exit(1);
-	pre_valid(argc, argv, data);
-	if (data->pl_count > MAX_PLAYERS)
-	{
-		error_many_champ();
-        data_free(data);
-		return (0);
-	}
-	else if (data->error.help == 1)
-	{
-		print_help();
-        data_free(data);
-		return (0);
-	}
-	if (validation(argc, argv, data))
-		return (1);
-	if (data->error.help == 1)
-	{
-		print_help();
-        data_free(data);
-		return (0);
-	}
-	cor_num_champ(data);
-	if (read_champ(data))
-	{
-		data_free(data);
-		return(1);
-	}
+	if (valid_read(argc, argv, data))
+        return (1);
 	sort_champs(data);
 	if (load_arena(data))
         return (1);

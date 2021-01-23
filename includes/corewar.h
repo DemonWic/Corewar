@@ -211,6 +211,8 @@ void    cursors_exec(t_init *data);
 int print_arena(t_init *data, int type);
 void do_op(t_init *data, t_cursor *buffer);
 int    update_vm(t_init *data, t_vdata *vdata);
+int valid_read(int argc, char **argv, t_init *data);
+int error_help(t_init *data);
 
 
 // visio
