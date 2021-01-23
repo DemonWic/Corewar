@@ -1,14 +1,5 @@
 #include "corewar.h"
 
-int cor_addr(int num)
-{
-	int res;
-	
-	res = num % MEM_SIZE;
-	if (res < 0)
-		res += MEM_SIZE;
-	return (res);
-}
 
 void op_ld2(t_cursor *cursor, int arg1, int arg2, char *types)
 {
@@ -60,9 +51,16 @@ int op_st2(t_cursor *cursor, t_init *data, int arg1, int arg2)
 	return (arg2);
 }
 
+void op_st3(t_cursor *cursor, char *types)
+{
+    cursor->position = cor_addr(cursor->position);
+    cursor->pc = cursor->position;
+    ft_memdel((void **)&types);
+}
+
 int op_st(t_cursor *cursor, t_init *data)
 {
-	char *types;
+    char *types;
 	unsigned char *num;
 	int arg1;
 	int arg2;
@@ -79,12 +77,11 @@ int op_st(t_cursor *cursor, t_init *data)
 		arg2 = code_to_int2(data, cursor->position, IND_SIZE) % IDX_MOD;
 		cursor->position += IND_SIZE;
 		num = int_to_code(cursor->regs[arg1]);
-		ft_color(data, cor_addr(cursor->pc + arg2), REG_SIZE, (cursor->regs[1] * -1));
+		ft_color(data, cor_addr(cursor->pc + arg2),
+		        REG_SIZE, (cursor->regs[1] * -1));
 		ft_unmemcpy2(data, cor_addr(cursor->pc + arg2), num, REG_SIZE);
 		ft_memdel((void **)&num);
 	}
-	cursor->position = cor_addr(cursor->position);
-	cursor->pc = cursor->position;
-	ft_memdel((void **)&types);
+	op_st3(cursor, types);
 	return (0);
 }

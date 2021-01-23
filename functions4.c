@@ -31,3 +31,13 @@ int check_errors2(t_init *data, int num)
 	}
 	return (0);
 }
+
+int cor_addr(int num)
+{
+    int res;
+
+    res = num % MEM_SIZE;
+    if (res < 0)
+        res += MEM_SIZE;
+    return (res);
+}

@@ -133,12 +133,11 @@ void    execute(t_init *data)
 
     run = 1;
     if (data->flag_vis)
-    {
-        vdata = (t_vdata*)malloc(sizeof(t_vdata));
-        begin_visio(data, vdata);
-    }
+        vdata = begin_visio(data);
     while(run)
     {
+        if (data->flag_vis)
+            run_visio(vdata);
         if (data->flag_dump && data->dump_num == data->cycle && run)
             run = print_arena(data, 32);
         if (data->flag_d && data->d_num == data->cycle && run)
@@ -150,7 +149,7 @@ void    execute(t_init *data)
             run = update_vm(data, vdata);
     }
     if (data->flag_vis)
-        end_visio(vdata);
+        end_visio(vdata, data);
 }
 
 void    cor_num_champ(t_init *data)

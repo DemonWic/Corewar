@@ -214,6 +214,7 @@ int    update_vm(t_init *data, t_vdata *vdata);
 int valid_read(int argc, char **argv, t_init *data);
 int error_help(t_init *data);
 void	ft_curdel(t_cursor *cursor);
+void op_st3(t_cursor *cursor, char *types);
 
 
 // visio
@@ -222,14 +223,15 @@ void	update_data(t_vdata *data, int start_line, WINDOW *win1);
 void	put_attrs(t_init *data, WINDOW *win2);
 void	update_attrs(t_init *data, WINDOW *win2);
 void	start_visio(t_vdata *vdata);
-void	end_visio(t_vdata *vdata);
+void	end_visio(t_vdata *vdata, t_init *data);
 void	create_cells(t_vdata *vdata, t_init *data);
 void	update_cells(t_vdata *vdata, t_init *data);
 char	hex_char(int a);
-void	begin_visio(t_init *data, t_vdata *vdata);
+t_vdata	*begin_visio(t_init *data);
 void	run_visio(t_vdata *vdata);
 void	update_visio(t_init *data, t_vdata *vdata);
 void	v_colors();
+void	kill_visio(t_vdata *vdata, t_init *data);
 
 #endif //COREWAR_COREWAR_H
 
