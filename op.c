@@ -34,7 +34,6 @@ char *get_types_arg(t_cursor *cursor, unsigned char *arena)
         while (++i < 3)
         {
             tab[i] = (arg_code & (192 >> (i * 2))) >> (6 - (i * 2));
-            buf = tab[i];
         }
     }
     return (tab);

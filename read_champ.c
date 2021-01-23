@@ -80,9 +80,8 @@ int read_champ(t_init *data)
 	ret = 0;
 	while (a[0] < data->pl_count)
 	{
-		a[1] = open(data->champs[a[0]]->file, O_RDONLY, 0);
-		if (a[1] == -1)
-			data->error.no_such_file = 1;
+		if ((a[1] = open(data->champs[a[0]]->file, O_RDONLY, 0)) < 0)
+		    return (error_open());
 		else
 			ret = read_champ2(a, ret, buf2, data);
 		if (check_errors(data, a[0]))

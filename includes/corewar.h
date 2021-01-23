@@ -208,6 +208,9 @@ int load_arena(t_init *data);
 void    cor_num_champ(t_init *data);
 void    execute(t_init *data);
 void    cursors_exec(t_init *data);
+int print_arena(t_init *data, int type);
+void do_op(t_init *data, t_cursor *buffer);
+int    update_vm(t_init *data, t_vdata *vdata);
 
 
 // visio

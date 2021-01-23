@@ -25,7 +25,7 @@ if [ $( tail -n 1 og_dump | cut -d " " -f1 ) == "Error:" ]; then
 	exit 2
 fi
 
-CYCLE=45000
+CYCLE=0
 STEP=1000
 
 while [ 1 ]; do

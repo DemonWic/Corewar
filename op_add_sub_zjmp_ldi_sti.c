@@ -90,7 +90,6 @@ int op_ldi(t_cursor *cursor, t_init *data)
 	if (arg3 >= 1 && arg3 <= REG_NUMBER)
 	{
 		cursor->regs[arg3] = code_to_int2(data, (cursor->pc + ((arg1 + arg2) % IDX_MOD)), 4);
-//		cursor->carry = (cursor->regs[arg3] == 0) ? 1 : 0;
 	}
 	cursor->position = cor_addr(cursor->position);
 	cursor->pc = cursor->position;

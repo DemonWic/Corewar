@@ -60,11 +60,31 @@ int load_arena(t_init *data)
     return (0);
 }
 
+void do_op(t_init *data, t_cursor *buffer)
+{
+    if (buffer->op_code >= 1 && buffer->op_code <= 16)
+    {
+        if (check_args_types(data, buffer))
+        {
+            g_op_tab[buffer->op_code].func(buffer, data);
+            buffer->cycle_to_op = 0;
+        }
+        else
+            update_cur(data, buffer);
+    }
+    else
+    {
+        buffer->pc = cor_addr(buffer->pc + 1);
+        buffer->position = buffer->pc;
+    }
+}
 
 void    cursors_exec(t_init *data)
 {
     t_cursor *buffer;
 
+    data->cycle++;
+    data->cycle_after_check++;
     buffer = data->cursors;
     while (buffer)
     {
@@ -79,25 +99,31 @@ void    cursors_exec(t_init *data)
         if (buffer->cycle_to_op > 0)
             buffer->cycle_to_op--;
         if (buffer->cycle_to_op == 0)
-        {
-            if (buffer->op_code >= 1 && buffer->op_code <= 16)
-            {
-                if (check_args_types(data, buffer))
-                {
-                    g_op_tab[buffer->op_code].func(buffer, data);
-                    buffer->cycle_to_op = 0;
-                }
-                else
-                    update_cur(data, buffer);
-            }
-            else
-            {
-                buffer->pc = cor_addr(buffer->pc + 1);
-                buffer->position = buffer->pc;
-            }
-        }
+            do_op(data, buffer);
         buffer = buffer->next;
     }
+}
+
+int print_arena(t_init *data, int type)
+{
+    if (type == 32)
+        print_buf(data->arena);
+    else if (type == 64)
+        print_buf2(data->arena);
+    data->print_win = 1;
+    return (0);
+}
+
+int    update_vm(t_init *data, t_vdata *vdata)
+{
+    int res;
+
+    res = 1;
+    if (data->cursors == NULL)
+        res = 0;
+    if (data->flag_vis)
+        update_visio(data, vdata);
+    return (res);
 }
 
 void    execute(t_init *data)
@@ -114,28 +140,15 @@ void    execute(t_init *data)
     while(run)
     {
         if (data->flag_dump && data->dump_num == data->cycle && run)
-        {
-            print_buf(data->arena);
-            data->print_win = 1;
-            run = 0;
-        }
+            run = print_arena(data, 32);
         if (data->flag_d && data->d_num == data->cycle && run)
-        {
-            print_buf2(data->arena);
-            data->print_win = 1;
-            run = 0;
-        }
-        data->cycle++;
-        data->cycle_after_check++;
+            run = print_arena(data, 64);
         cursors_exec(data);
         if (data->cycle_after_check == data->cycles_to_die || data->cycles_to_die <= 0)
             big_check(data);
-        if (data->cursors == NULL)
-            run = 0;
-        if (data->flag_vis)
-            update_visio(data, vdata);
+        if (data->flag_vis || data->cursors == NULL)
+            run = update_vm(data, vdata);
     }
-
     if (data->flag_vis)
         end_visio(vdata);
 }
@@ -162,8 +175,8 @@ int main(int argc, char **argv)
 
     if (argc < 2)
         print_help();
-	data = init_data();
-	if (data == NULL)
+//	data = init_data();
+	if ((data = init_data())== NULL)
 		exit(1);
 	pre_valid(argc, argv, data);
 	if (data->pl_count > MAX_PLAYERS)
@@ -187,22 +200,17 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	cor_num_champ(data);
-
 	if (read_champ(data))
 	{
 		data_free(data);
 		return(1);
 	}
 	sort_champs(data);
-
 	if (load_arena(data))
         return (1);
-
 	if (!data->flag_vis)
 	    pres_champ(data);
-
 	execute(data);
-
     if (!(data->flag_vis || data->print_win))
         put_winner(data);
 	data_free(data);

@@ -56,7 +56,6 @@ int op_st2(t_cursor *cursor, t_init *data, int arg1, int arg2)
 	if ((arg1 >= 1 && arg1 <= REG_NUMBER) && (arg2 >= 1 && arg2 <= REG_NUMBER))
 	{
 		cursor->regs[arg2] = cursor->regs[arg1];
-//		cursor->carry = (cursor->regs[arg1] == 0) ? 1 : 0;
 	}
 	return (arg2);
 }
