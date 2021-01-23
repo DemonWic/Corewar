@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   visio_update_data.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dteemo <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/21 17:15:15 by dteemo            #+#    #+#             */
+/*   Updated: 2021/01/21 17:15:16 by dteemo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void	put_cell(int row, int col, t_cell cell, WINDOW *win1)
 {
 	char	*c;
-	
+
 	wcolor_set(win1, 1, NULL);
 	c = ft_strnew(3);
 	wmove(win1, row, col * 3 + 2);
@@ -52,17 +64,19 @@ void	update_data(t_vdata *data, int start_line, WINDOW *win1)
 {
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	i += start_line * VISIO_LINE;
-	while (i < MEM_SIZE && i < (LINES * (VISIO_LINE - 3) + start_line * VISIO_LINE))
+	while (i < MEM_SIZE && i < (LINES * (VISIO_LINE - 3) +
+	start_line * VISIO_LINE))
 	{
 		j = 0;
 		while (j < VISIO_LINE)
 		{
 			if (!cmp_data(data, i + j))
 			{
-				put_cell(i / VISIO_LINE - start_line + 1, j, data->buf[i + j], win1);
+				put_cell(i / VISIO_LINE - start_line + 1, j,
+				data->buf[i + j], win1);
 				update_old(data, i + j);
 			}
 			j++;

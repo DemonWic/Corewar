@@ -98,6 +98,8 @@ add_executable(corewar libft/ft_atoi.c
         visio_update_attrs.c
         visio_update_data.c
         visio_put_attrs.c
-        main_functions3.c)
+        main_functions3.c
+        main2.c
+        main3.c)
 
 target_link_libraries(${PROJECT_NAME} ncurses)

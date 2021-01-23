@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   visio_put_data.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dteemo <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/21 17:14:59 by dteemo            #+#    #+#             */
+/*   Updated: 2021/01/21 17:15:01 by dteemo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-void	v_colors()
+void	v_colors(void)
 {
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
@@ -9,7 +21,7 @@ void	v_colors()
 	init_pair(4, COLOR_BLUE, COLOR_BLACK);
 	init_pair(5, COLOR_WHITE, COLOR_BLUE);
 	init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(7, COLOR_WHITE, COLOR_MAGENTA);	
+	init_pair(7, COLOR_WHITE, COLOR_MAGENTA);
 	init_pair(8, COLOR_RED, COLOR_BLACK);
 	init_pair(9, COLOR_WHITE, COLOR_RED);
 	init_pair(10, COLOR_BLACK, COLOR_WHITE);
@@ -31,7 +43,7 @@ void	init_old_buf(t_vdata *data)
 	}
 }
 
-void    put_one(t_vdata *data, WINDOW *win1, int a, char *c)
+void	put_one(t_vdata *data, WINDOW *win1, int a, char *c)
 {
 	if (data->buf[a].player != 0)
 		wcolor_set(win1, data->buf[a].player * 2, NULL);
@@ -51,8 +63,9 @@ void    put_one(t_vdata *data, WINDOW *win1, int a, char *c)
 	wprintw(win1, " ");
 }
 
-int put_data2(WINDOW *win1)
+int		put_data2(WINDOW *win1)
 {
+	wclear(win1);
 	v_colors();
 	wbkgd(win1, COLOR_PAIR(10));
 	wmove(win1, 1, 1);
@@ -66,11 +79,11 @@ void	put_data(t_vdata *data, int start_line, WINDOW *win1)
 	char	*c;
 	int		cur_l;
 
-	wclear(win1);
 	i = start_line * VISIO_LINE;
 	c = ft_strnew(3);
 	cur_l = put_data2(win1);
-	while (i < MEM_SIZE && i < (LINES * (VISIO_LINE - 3) + start_line * VISIO_LINE))
+	while (i < MEM_SIZE && i < (LINES * (VISIO_LINE - 3) +
+	start_line * VISIO_LINE))
 	{
 		j = 0;
 		wcolor_set(win1, 1, NULL);

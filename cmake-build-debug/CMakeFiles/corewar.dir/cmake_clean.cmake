@@ -70,6 +70,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/libft/ft_toupper.c.o"
   "CMakeFiles/corewar.dir/libft/get_next_line.c.o"
   "CMakeFiles/corewar.dir/main.c.o"
+  "CMakeFiles/corewar.dir/main2.c.o"
+  "CMakeFiles/corewar.dir/main3.c.o"
   "CMakeFiles/corewar.dir/main_functions.c.o"
   "CMakeFiles/corewar.dir/main_functions2.c.o"
   "CMakeFiles/corewar.dir/main_functions3.c.o"

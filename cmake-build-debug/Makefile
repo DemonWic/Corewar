@@ -2040,6 +2040,60 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main.c.s
 .PHONY : main.c.s
 
+main2.o: main2.c.o
+
+.PHONY : main2.o
+
+# target to build an object file
+main2.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main2.c.o
+.PHONY : main2.c.o
+
+main2.i: main2.c.i
+
+.PHONY : main2.i
+
+# target to preprocess a source file
+main2.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main2.c.i
+.PHONY : main2.c.i
+
+main2.s: main2.c.s
+
+.PHONY : main2.s
+
+# target to generate assembly for a file
+main2.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main2.c.s
+.PHONY : main2.c.s
+
+main3.o: main3.c.o
+
+.PHONY : main3.o
+
+# target to build an object file
+main3.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main3.c.o
+.PHONY : main3.c.o
+
+main3.i: main3.c.i
+
+.PHONY : main3.i
+
+# target to preprocess a source file
+main3.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main3.c.i
+.PHONY : main3.c.i
+
+main3.s: main3.c.s
+
+.PHONY : main3.s
+
+# target to generate assembly for a file
+main3.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main3.c.s
+.PHONY : main3.c.s
+
 main_functions.o: main_functions.c.o
 
 .PHONY : main_functions.o
@@ -2748,6 +2802,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... main2.o"
+	@echo "... main2.i"
+	@echo "... main2.s"
+	@echo "... main3.o"
+	@echo "... main3.i"
+	@echo "... main3.s"
 	@echo "... main_functions.o"
 	@echo "... main_functions.i"
 	@echo "... main_functions.s"

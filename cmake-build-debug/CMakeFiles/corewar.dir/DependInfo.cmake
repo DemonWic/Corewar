@@ -75,6 +75,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/ahintz/Downloads/Corewar7/libft/ft_toupper.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/libft/ft_toupper.c.o"
   "/Users/ahintz/Downloads/Corewar7/libft/get_next_line.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/libft/get_next_line.c.o"
   "/Users/ahintz/Downloads/Corewar7/main.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main.c.o"
+  "/Users/ahintz/Downloads/Corewar7/main2.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main2.c.o"
+  "/Users/ahintz/Downloads/Corewar7/main3.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main3.c.o"
   "/Users/ahintz/Downloads/Corewar7/main_functions.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main_functions.c.o"
   "/Users/ahintz/Downloads/Corewar7/main_functions2.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main_functions2.c.o"
   "/Users/ahintz/Downloads/Corewar7/main_functions3.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main_functions3.c.o"

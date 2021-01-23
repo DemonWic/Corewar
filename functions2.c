@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functions2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahintz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/23 14:46:36 by ahintz            #+#    #+#             */
+/*   Updated: 2021/01/23 14:46:38 by ahintz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-int				ft_isnumber(char *str)
+int		ft_isnumber(char *str)
 {
 	int i;
-	
+
 	i = 0;
 	while (str[i])
 	{
@@ -14,12 +26,11 @@ int				ft_isnumber(char *str)
 	return (1);
 }
 
-
-int ft_valname(char *file)
+int		ft_valname(char *file)
 {
 	int i;
 	int len;
-	
+
 	if (file == NULL)
 		return (0);
 	len = ft_strlen(file);
@@ -32,10 +43,10 @@ int ft_valname(char *file)
 	return (0);
 }
 
-t_init  *init_data(void)
+t_init	*init_data(void)
 {
 	t_init *data;
-	
+
 	data = (t_init *)ft_memalloc(sizeof(t_init));
 	if (data == NULL)
 		return (NULL);
@@ -59,7 +70,7 @@ t_init  *init_data(void)
 	return (data);
 }
 
-void    valid_flags(char **argv, int i, t_init *data)
+void	valid_flags(char **argv, int i, t_init *data)
 {
 	if (ft_valname(argv[i]))
 		data->pl_count++;
@@ -79,10 +90,10 @@ void    valid_flags(char **argv, int i, t_init *data)
 		data->error.help = 1;
 }
 
-void    pre_valid(int argc, char **argv, t_init *data)
+void	pre_valid(int argc, char **argv, t_init *data)
 {
 	int i;
-	
+
 	i = 1;
 	while (i < argc)
 	{
@@ -91,7 +102,8 @@ void    pre_valid(int argc, char **argv, t_init *data)
 	}
 	if (data->flag_dump && data->flag_d)
 		data->error.help = 1;
-	if (data->flag_dump > 1 || data->flag_d > 1 || data->flag_aff > 1 || data->flag_vis > 1)
+	if (data->flag_dump > 1 || data->flag_d > 1 ||
+		data->flag_aff > 1 || data->flag_vis > 1)
 		data->error.help = 1;
 	if (data->num != (data->flag_n + data->flag_dump + data->flag_d))
 		data->error.help = 1;

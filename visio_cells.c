@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   visio_cells.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dteemo <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/21 17:10:29 by dteemo            #+#    #+#             */
+/*   Updated: 2021/01/21 17:10:31 by dteemo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void	create_cells(t_vdata *vdata, t_init *data)
@@ -23,7 +35,7 @@ void	create_cells(t_vdata *vdata, t_init *data)
 	}
 }
 
-void    update_cells2(t_vdata *vdata, t_init *data, int i)
+void	update_cells2(t_vdata *vdata, t_init *data, int i)
 {
 	if (vdata->buf[i].c != data->arena[i])
 		vdata->buf[i].c = data->arena[i];
