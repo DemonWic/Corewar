@@ -77,6 +77,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/ahintz/Downloads/Corewar7/main.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main.c.o"
   "/Users/ahintz/Downloads/Corewar7/main_functions.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main_functions.c.o"
   "/Users/ahintz/Downloads/Corewar7/main_functions2.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main_functions2.c.o"
+  "/Users/ahintz/Downloads/Corewar7/main_functions3.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/main_functions3.c.o"
   "/Users/ahintz/Downloads/Corewar7/op.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/op.c.o"
   "/Users/ahintz/Downloads/Corewar7/op_add_sub_zjmp_ldi_sti.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/op_add_sub_zjmp_ldi_sti.c.o"
   "/Users/ahintz/Downloads/Corewar7/op_addr_ld_st.c" "/Users/ahintz/Downloads/Corewar7/cmake-build-debug/CMakeFiles/corewar.dir/op_addr_ld_st.c.o"

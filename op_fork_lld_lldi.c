@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_fork_lld_lldi.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahintz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/08 17:14:56 by ahintz            #+#    #+#             */
+/*   Updated: 2018/12/08 17:21:17 by ahintz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-t_cursor *op_fork2(t_init *data, t_cursor *new, t_cursor *buf)
+t_cursor	*op_fork2(t_init *data, t_cursor *new, t_cursor *buf)
 {
 	if (data->cursors == NULL)
 	{
@@ -21,16 +33,17 @@ t_cursor *op_fork2(t_init *data, t_cursor *new, t_cursor *buf)
 	return (buf);
 }
 
-int op_fork(t_cursor *cursor, t_init *data)
+int			op_fork(t_cursor *cursor, t_init *data)
 {
-	int arg1;
-	int i;
-	t_cursor *new;
-	t_cursor *buf;
-	
+	int			arg1;
+	int			i;
+	t_cursor	*new;
+	t_cursor	*buf;
+
 	i = -1;
 	cursor->position += 1;
-	arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir) % IDX_MOD;
+	arg1 = code_to_int2(data, cursor->position,
+	g_op_tab[cursor->op_code].dir) % IDX_MOD;
 	arg1 = cor_addr(cursor->pc + arg1);
 	cursor->position += g_op_tab[cursor->op_code].dir;
 	cursor->position = cor_addr(cursor->position);
@@ -49,7 +62,7 @@ int op_fork(t_cursor *cursor, t_init *data)
 	return (0);
 }
 
-int op_lld2(t_cursor *cursor, t_init *data, int arg1, int arg2)
+int			op_lld2(t_cursor *cursor, t_init *data, int arg1, int arg2)
 {
 	arg2 = (int)data->arena[cor_addr(cursor->position)];
 	if (arg2 >= 1 && arg2 <= REG_NUMBER)
@@ -63,19 +76,20 @@ int op_lld2(t_cursor *cursor, t_init *data, int arg1, int arg2)
 	return (arg2);
 }
 
-int    op_lld(t_cursor *cursor, t_init *data)
+int			op_lld(t_cursor *cursor, t_init *data)
 {
-	char *types;
-	int arg1;
-	int arg2;
-	
+	char	*types;
+	int		arg1;
+	int		arg2;
+
 	arg1 = 0;
 	arg2 = 0;
 	types = get_types_arg(cursor, data->arena);
 	cursor->position += 2;
 	if (types[0] == DIR_CODE)
 	{
-		arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir);
+		arg1 = code_to_int2(data, cursor->position,
+		g_op_tab[cursor->op_code].dir);
 		cursor->position += g_op_tab[cursor->op_code].dir;
 	}
 	else if (types[0] == IND_CODE)
@@ -85,17 +99,17 @@ int    op_lld(t_cursor *cursor, t_init *data)
 		cursor->position += IND_SIZE;
 	}
 	arg2 = op_lld2(cursor, data, arg1, arg2);
-    ft_memdel((void **)&types);
+	ft_memdel((void **)&types);
 	return (0);
 }
 
-int op_lldi(t_cursor *cursor, t_init *data)
+int			op_lldi(t_cursor *cursor, t_init *data)
 {
-	char *types;
-	int arg1;
-	int arg2;
-	int arg3;
-	
+	char	*types;
+	int		arg1;
+	int		arg2;
+	int		arg3;
+
 	types = get_types_arg(cursor, data->arena);
 	cursor->position += 2;
 	arg1 = get_value(types[0], cursor, data);
@@ -104,10 +118,11 @@ int op_lldi(t_cursor *cursor, t_init *data)
 	cursor->position += 1;
 	if (arg3 >= 1 && arg3 <= REG_NUMBER)
 	{
-		cursor->regs[arg3] = code_to_int2(data, (cursor->pc + (arg1 + arg2)), 4);
+		cursor->regs[arg3] = code_to_int2(data,
+		(cursor->pc + (arg1 + arg2)), 4);
 	}
 	cursor->position = cor_addr(cursor->position);
 	cursor->pc = cursor->position;
-    ft_memdel((void **)&types);
+	ft_memdel((void **)&types);
 	return (0);
 }

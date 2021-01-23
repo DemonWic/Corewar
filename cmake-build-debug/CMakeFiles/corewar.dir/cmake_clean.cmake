@@ -72,6 +72,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/main.c.o"
   "CMakeFiles/corewar.dir/main_functions.c.o"
   "CMakeFiles/corewar.dir/main_functions2.c.o"
+  "CMakeFiles/corewar.dir/main_functions3.c.o"
   "CMakeFiles/corewar.dir/op.c.o"
   "CMakeFiles/corewar.dir/op_add_sub_zjmp_ldi_sti.c.o"
   "CMakeFiles/corewar.dir/op_addr_ld_st.c.o"

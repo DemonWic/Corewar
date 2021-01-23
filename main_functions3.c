@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation2.c                                      :+:      :+:    :+:   */
+/*   main_functions3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahintz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,35 +12,15 @@
 
 #include "corewar.h"
 
-int		validation3(int a[5], char **argv, t_init *data)
+void	ft_color(t_init *data, int addr, size_t n, int color)
 {
-	data->champs[a[1]] = (t_champ *)ft_memalloc(sizeof(t_champ));
-	if (data->champs[a[1]] == NULL)
-		return (1);
-	data->champs[a[1]]->file = ft_strdup(argv[a[0]]);
-	data->champs[a[1]]->num = 0;
-	a[1]++;
-	return (2);
-}
+	size_t	i;
 
-void	validation4(int a[5], char **argv, t_init *data)
-{
-	if (ft_isnumber(argv[a[0] + 1]) && ft_atoi(argv[a[0] + 1]) >= 0)
+	i = 0;
+	while (i < n)
 	{
-		data->dump_num = ft_atoi(argv[a[0] + 1]);
-		a[0]++;
+		data->col_arena[cor_addr(addr)] = color;
+		i++;
+		addr++;
 	}
-	else
-		data->error.help = 1;
-}
-
-void	validation5(int a[5], char **argv, t_init *data)
-{
-	if (ft_isnumber(argv[a[0] + 1]) && ft_atoi(argv[a[0] + 1]) >= 0)
-	{
-		data->d_num = ft_atoi(argv[a[0] + 1]);
-		a[0]++;
-	}
-	else
-		data->error.help = 1;
 }

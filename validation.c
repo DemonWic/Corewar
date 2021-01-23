@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahintz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/08 17:14:56 by ahintz            #+#    #+#             */
+/*   Updated: 2018/12/08 17:21:17 by ahintz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-void validation7(int a[5], char **argv, t_init *data)
+void	validation7(int a[5], char **argv, t_init *data)
 {
 	data->champs[a[1]]->file = ft_strdup(argv[a[0] + 2]);
 	data->champs[a[1]]->num = a[2];
@@ -11,7 +23,7 @@ void validation7(int a[5], char **argv, t_init *data)
 	a[0] += 2;
 }
 
-int validation2(int a[5], char **argv, t_init *data)
+int		validation2(int a[5], char **argv, t_init *data)
 {
 	if (ft_isnumber(argv[a[0] + 1]))
 	{
@@ -39,7 +51,7 @@ int validation2(int a[5], char **argv, t_init *data)
 	return (2);
 }
 
-int validation6(int a[5], char **argv, t_init *data)
+int		validation6(int a[5], char **argv, t_init *data)
 {
 	if (ft_valname(argv[a[0]]))
 	{
@@ -67,10 +79,10 @@ int validation6(int a[5], char **argv, t_init *data)
 	return (3);
 }
 
-int    validation(int argc, char **argv, t_init *data)
+int		validation(int argc, char **argv, t_init *data)
 {
 	int a[5];
-	
+
 	a[0] = 1;
 	a[1] = 0;
 	while (a[0] < argc)
@@ -84,4 +96,3 @@ int    validation(int argc, char **argv, t_init *data)
 	}
 	return (0);
 }
-

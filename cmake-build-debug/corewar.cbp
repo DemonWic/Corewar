@@ -316,6 +316,9 @@
 		<Unit filename="/Users/ahintz/Downloads/Corewar7/main_functions2.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/ahintz/Downloads/Corewar7/main_functions3.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/ahintz/Downloads/Corewar7/op.c">
 			<Option target="corewar"/>
 		</Unit>

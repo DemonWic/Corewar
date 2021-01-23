@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_add_sub_zjmp_ldi_sti.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahintz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/08 17:14:56 by ahintz            #+#    #+#             */
+/*   Updated: 2018/12/08 17:21:17 by ahintz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-int op_add(t_cursor *cursor, t_init *data)
+int		op_add(t_cursor *cursor, t_init *data)
 {
-	int arg1;
-	int arg2;
-	int arg3;
-	
+	int	arg1;
+	int	arg2;
+	int	arg3;
+
 	arg1 = 0;
 	arg2 = 0;
 	arg3 = 0;
@@ -16,7 +28,8 @@ int op_add(t_cursor *cursor, t_init *data)
 	cursor->position += 1;
 	arg3 = (int)data->arena[cor_addr(cursor->position)];
 	cursor->position += 1;
-	if ((arg1 >= 1 && arg1 <= REG_NUMBER) && (arg2 >= 1 && arg2 <= REG_NUMBER) && (arg3 >= 1 && arg3 <= REG_NUMBER))
+	if ((arg1 >= 1 && arg1 <= REG_NUMBER) &&
+	(arg2 >= 1 && arg2 <= REG_NUMBER) && (arg3 >= 1 && arg3 <= REG_NUMBER))
 	{
 		cursor->regs[arg3] = cursor->regs[arg1] + cursor->regs[arg2];
 		cursor->carry = (cursor->regs[arg3] == 0) ? 1 : 0;
@@ -26,13 +39,12 @@ int op_add(t_cursor *cursor, t_init *data)
 	return (0);
 }
 
-
-int op_sub(t_cursor *cursor, t_init *data)
+int		op_sub(t_cursor *cursor, t_init *data)
 {
-	int arg1;
-	int arg2;
-	int arg3;
-	
+	int	arg1;
+	int	arg2;
+	int	arg3;
+
 	arg1 = 0;
 	arg2 = 0;
 	arg3 = 0;
@@ -43,7 +55,8 @@ int op_sub(t_cursor *cursor, t_init *data)
 	cursor->position += 1;
 	arg3 = (int)data->arena[cor_addr(cursor->position)];
 	cursor->position += 1;
-	if ((arg1 >= 1 && arg1 <= REG_NUMBER) && (arg2 >= 1 && arg2 <= REG_NUMBER) && (arg3 >= 1 && arg3 <= REG_NUMBER))
+	if ((arg1 >= 1 && arg1 <= REG_NUMBER) &&
+	(arg2 >= 1 && arg2 <= REG_NUMBER) && (arg3 >= 1 && arg3 <= REG_NUMBER))
 	{
 		cursor->regs[arg3] = cursor->regs[arg1] - cursor->regs[arg2];
 		cursor->carry = (cursor->regs[arg3] == 0) ? 1 : 0;
@@ -53,12 +66,13 @@ int op_sub(t_cursor *cursor, t_init *data)
 	return (0);
 }
 
-int op_zjmp(t_cursor *cursor, t_init *data)
+int		op_zjmp(t_cursor *cursor, t_init *data)
 {
-	int arg1;
-	
+	int	arg1;
+
 	cursor->position += 1;
-	arg1 = code_to_int2(data, cursor->position, g_op_tab[cursor->op_code].dir) % IDX_MOD;
+	arg1 = code_to_int2(data, cursor->position,
+	g_op_tab[cursor->op_code].dir) % IDX_MOD;
 	if (cursor->carry == 1)
 	{
 		cursor->pc += arg1;
@@ -74,13 +88,13 @@ int op_zjmp(t_cursor *cursor, t_init *data)
 	return (0);
 }
 
-int op_ldi(t_cursor *cursor, t_init *data)
+int		op_ldi(t_cursor *cursor, t_init *data)
 {
-	char *types;
-	int arg1;
-	int arg2;
-	int arg3;
-	
+	char	*types;
+	int		arg1;
+	int		arg2;
+	int		arg3;
+
 	types = get_types_arg(cursor, data->arena);
 	cursor->position += 2;
 	arg1 = get_value(types[0], cursor, data);
@@ -89,7 +103,8 @@ int op_ldi(t_cursor *cursor, t_init *data)
 	cursor->position += 1;
 	if (arg3 >= 1 && arg3 <= REG_NUMBER)
 	{
-		cursor->regs[arg3] = code_to_int2(data, (cursor->pc + ((arg1 + arg2) % IDX_MOD)), 4);
+		cursor->regs[arg3] = code_to_int2(data,
+		(cursor->pc + ((arg1 + arg2) % IDX_MOD)), 4);
 	}
 	cursor->position = cor_addr(cursor->position);
 	cursor->pc = cursor->position;
@@ -97,13 +112,13 @@ int op_ldi(t_cursor *cursor, t_init *data)
 	return (0);
 }
 
-int op_sti(t_cursor *cursor, t_init *data)
+int		op_sti(t_cursor *cursor, t_init *data)
 {
-	char *types;
-	unsigned char *num;
-	int arg[3];
-	int addr;
-	
+	char			*types;
+	unsigned char	*num;
+	int				arg[3];
+	int				addr;
+
 	types = get_types_arg(cursor, data->arena);
 	cursor->position += 2;
 	arg[0] = (int)data->arena[cor_addr(cursor->position)];

@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahintz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/08 17:14:56 by ahintz            #+#    #+#             */
+/*   Updated: 2018/12/08 17:21:17 by ahintz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-void sort_champs(t_init *data)
+void	sort_champs(t_init *data)
 {
-	int i;
-	int j;
-	t_champ *buf;
-	
+	int		i;
+	int		j;
+	t_champ	*buf;
+
 	i = 0;
 	while (i < (data->pl_count - 1))
 	{
 		j = 0;
-		while(j < (data->pl_count - i - 1))
+		while (j < (data->pl_count - i - 1))
 		{
 			if (data->champs[j]->num > data->champs[j + 1]->num)
 			{
@@ -24,11 +36,11 @@ void sort_champs(t_init *data)
 	}
 }
 
-int add_cursor(t_init *data, int champ, int arena_id)
+int		add_cursor(t_init *data, int champ, int arena_id)
 {
-	t_cursor *new;
-	t_cursor *buf;
-	
+	t_cursor	*new;
+	t_cursor	*buf;
+
 	new = (t_cursor *)ft_memalloc(sizeof(t_cursor));
 	if (new == NULL)
 		return (1);
@@ -39,7 +51,7 @@ int add_cursor(t_init *data, int champ, int arena_id)
 	new->carry = 0;
 	new->position = arena_id;
 	new->pc = arena_id;
-	new->regs[1] = - data->champs[champ]->num;
+	new->regs[1] = -data->champs[champ]->num;
 	new->next = NULL;
 	if (data->cursors == NULL)
 		data->cursors = new;
@@ -52,25 +64,31 @@ int add_cursor(t_init *data, int champ, int arena_id)
 	return (0);
 }
 
-void kill_cursors(t_init *data)
+void	kill_cursors2(t_init *data, t_cursor *prev, t_cursor *buf)
 {
-	t_cursor *buf;
-	t_cursor *del;
-	t_cursor *prev;
-	
+	if (prev == NULL)
+		data->cursors = buf;
+	else
+		prev->next = buf;
+}
+
+void	kill_cursors(t_init *data)
+{
+	t_cursor	*buf;
+	t_cursor	*del;
+	t_cursor	*prev;
+
 	buf = data->cursors;
 	prev = NULL;
 	while (buf)
 	{
-		if ((data->cycle - buf->cycle_num_live) >= data->cycles_to_die || data->cycles_to_die <= 0)
+		if ((data->cycle - buf->cycle_num_live) >=
+		data->cycles_to_die || data->cycles_to_die <= 0)
 		{
 			data->cursors_count -= 1;
 			del = buf;
 			buf = buf->next;
-			if (prev == NULL)
-				data->cursors = buf;
-			else
-				prev->next = buf;
+			kill_cursors2(data, prev, buf);
 			ft_memdel((void **)&del);
 		}
 		else
@@ -81,7 +99,7 @@ void kill_cursors(t_init *data)
 	}
 }
 
-void big_check(t_init *data)
+void	big_check(t_init *data)
 {
 	data->check_count += 1;
 	kill_cursors(data);
@@ -92,18 +110,4 @@ void big_check(t_init *data)
 	}
 	data->cycle_after_check = 0;
 	data->live_count = 0;
-}
-
-
-void	ft_color(t_init *data, int addr, size_t n, int color)
-{
-	size_t	i;
-	
-	i = 0;
-	while (i < n)
-	{
-		data->col_arena[cor_addr(addr)] = color;
-		i++;
-		addr++;
-	}
 }

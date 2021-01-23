@@ -1,30 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_champ.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahintz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/08 17:14:56 by ahintz            #+#    #+#             */
+/*   Updated: 2018/12/08 17:21:17 by ahintz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-
-void	ft_curdel(t_cursor *cursor)
+void	data_free(t_init *data)
 {
-    t_cursor *buffer;
-    t_cursor *del;
+	int	i;
 
-    buffer = cursor;
-    while (buffer)
-    {
-        del = buffer;
-        buffer = buffer->next;
-        ft_memdel((void **)&del);
-    }
-}
-
-void data_free(t_init *data)
-{
-	int i;
-	
 	i = 0;
 	while (i < data->pl_count)
 	{
 		if (data->champs[i] != NULL)
 		{
-			if(data->champs[i]->file != NULL)
+			if (data->champs[i]->file != NULL)
 				free(data->champs[i]->file);
 			if (data->champs[i]->code != NULL)
 				free(data->champs[i]->code);
@@ -33,13 +30,13 @@ void data_free(t_init *data)
 		i++;
 	}
 	if (data->champs != NULL)
-	    free(data->champs);
+		free(data->champs);
 	if (data->cursors != NULL)
-	    ft_curdel(data->cursors);
+		ft_curdel(data->cursors);
 	free(data);
 }
 
-int read_champ3(int a[2], int ret, unsigned char buf2[4], t_init *data)
+int		read_champ3(int a[2], int ret, unsigned char buf2[4], t_init *data)
 {
 	ret = read(a[1], data->champs[a[0]]->comment, COMMENT_LENGTH);
 	if (ret != COMMENT_LENGTH)
@@ -47,7 +44,8 @@ int read_champ3(int a[2], int ret, unsigned char buf2[4], t_init *data)
 	ret = read(a[1], buf2, 4);
 	if (ret != 4 || code_to_int(buf2, 4) != 0)
 		data->error.invalid_head = 1;
-	data->champs[a[0]]->code = (unsigned char *)ft_memalloc(data->champs[a[0]]->size);
+	data->champs[a[0]]->code = (unsigned char *)
+	ft_memalloc(data->champs[a[0]]->size);
 	if (data->champs[a[0]]->code == NULL)
 		return (1);
 	ret = read(a[1], data->champs[a[0]]->code, data->champs[a[0]]->size);
@@ -59,7 +57,7 @@ int read_champ3(int a[2], int ret, unsigned char buf2[4], t_init *data)
 	return (ret);
 }
 
-int read_champ2(int a[2], int ret, unsigned char buf2[4], t_init *data)
+int		read_champ2(int a[2], int ret, unsigned char buf2[4], t_init *data)
 {
 	ret = read(a[1], buf2, 4);
 	if (ret != 4)
@@ -81,29 +79,28 @@ int read_champ2(int a[2], int ret, unsigned char buf2[4], t_init *data)
 	return (read_champ3(a, ret, buf2, data));
 }
 
-int error_open(void)
+int		error_open(void)
 {
-    perror("ERROR: Can\'t open file with champion");
-    return (1);
+	perror("ERROR: Can\'t open file with champion");
+	return (1);
 }
 
-int read_champ(t_init *data)
+int		read_champ(t_init *data)
 {
-	int a[2];
-	int ret;
-	unsigned char buf2[4];
-	
+	int				a[2];
+	int				ret;
+	unsigned char	buf2[4];
+
 	a[0] = 0;
 	ret = 0;
 	while (a[0] < data->pl_count)
 	{
 		if ((a[1] = open(data->champs[a[0]]->file, O_RDONLY, 0)) < 0)
-		    return (error_open());
+			return (error_open());
 		else
 			ret = read_champ2(a, ret, buf2, data);
 		if (check_errors(data, a[0]))
-		    return (1);
-
+			return (1);
 		a[0]++;
 	}
 	return (0);

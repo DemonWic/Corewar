@@ -2094,6 +2094,33 @@ main_functions2.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions2.c.s
 .PHONY : main_functions2.c.s
 
+main_functions3.o: main_functions3.c.o
+
+.PHONY : main_functions3.o
+
+# target to build an object file
+main_functions3.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions3.c.o
+.PHONY : main_functions3.c.o
+
+main_functions3.i: main_functions3.c.i
+
+.PHONY : main_functions3.i
+
+# target to preprocess a source file
+main_functions3.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions3.c.i
+.PHONY : main_functions3.c.i
+
+main_functions3.s: main_functions3.c.s
+
+.PHONY : main_functions3.s
+
+# target to generate assembly for a file
+main_functions3.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/main_functions3.c.s
+.PHONY : main_functions3.c.s
+
 op.o: op.c.o
 
 .PHONY : op.o
@@ -2727,6 +2754,9 @@ help:
 	@echo "... main_functions2.o"
 	@echo "... main_functions2.i"
 	@echo "... main_functions2.s"
+	@echo "... main_functions3.o"
+	@echo "... main_functions3.i"
+	@echo "... main_functions3.s"
 	@echo "... op.o"
 	@echo "... op.i"
 	@echo "... op.s"

@@ -234,6 +234,11 @@ CMakeFiles/corewar.dir/main_functions2.c.o: ../includes/libft.h
 CMakeFiles/corewar.dir/main_functions2.c.o: ../includes/op.h
 CMakeFiles/corewar.dir/main_functions2.c.o: ../main_functions2.c
 
+CMakeFiles/corewar.dir/main_functions3.c.o: ../includes/corewar.h
+CMakeFiles/corewar.dir/main_functions3.c.o: ../includes/libft.h
+CMakeFiles/corewar.dir/main_functions3.c.o: ../includes/op.h
+CMakeFiles/corewar.dir/main_functions3.c.o: ../main_functions3.c
+
 CMakeFiles/corewar.dir/op.c.o: ../includes/corewar.h
 CMakeFiles/corewar.dir/op.c.o: ../includes/libft.h
 CMakeFiles/corewar.dir/op.c.o: ../includes/op.h
