@@ -85,6 +85,7 @@ int    op_lld(t_cursor *cursor, t_init *data)
 		cursor->position += IND_SIZE;
 	}
 	arg2 = op_lld2(cursor, data, arg1, arg2);
+    ft_memdel((void **)&types);
 	return (0);
 }
 
@@ -107,5 +108,6 @@ int op_lldi(t_cursor *cursor, t_init *data)
 	}
 	cursor->position = cor_addr(cursor->position);
 	cursor->pc = cursor->position;
+    ft_memdel((void **)&types);
 	return (0);
 }

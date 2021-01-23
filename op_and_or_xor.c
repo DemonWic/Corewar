@@ -50,6 +50,7 @@ int op_and(t_cursor *cursor, t_init *data)
 		cursor->position = cor_addr(cursor->position);
 		cursor->pc = cursor->position;
 	}
+    ft_memdel((void **)&types);
 	return (0);
 }
 
@@ -76,6 +77,7 @@ int op_or(t_cursor *cursor, t_init *data)
 		cursor->position = cor_addr(cursor->position);
 		cursor->pc = cursor->position;
 	}
+    ft_memdel((void **)&types);
 	return (0);
 }
 
@@ -102,6 +104,7 @@ int op_xor(t_cursor *cursor, t_init *data)
 		cursor->position = cor_addr(cursor->position);
 		cursor->pc = cursor->position;
 	}
+    ft_memdel((void **)&types);
 	return (0);
 }
 

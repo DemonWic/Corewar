@@ -213,6 +213,7 @@ void do_op(t_init *data, t_cursor *buffer);
 int    update_vm(t_init *data, t_vdata *vdata);
 int valid_read(int argc, char **argv, t_init *data);
 int error_help(t_init *data);
+void	ft_curdel(t_cursor *cursor);
 
 
 // visio

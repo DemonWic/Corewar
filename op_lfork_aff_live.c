@@ -68,6 +68,7 @@ int op_aff(t_cursor *cursor, t_init *data)
         ft_putchar(sym);
         ft_putchar('\n');
     }
+    ft_memdel((void **)&types);
     return (0);
 }
 

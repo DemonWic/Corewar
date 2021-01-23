@@ -1,5 +1,20 @@
 #include "corewar.h"
 
+
+void	ft_curdel(t_cursor *cursor)
+{
+    t_cursor *buffer;
+    t_cursor *del;
+
+    buffer = cursor;
+    while (buffer)
+    {
+        del = buffer;
+        buffer = buffer->next;
+        ft_memdel((void **)&del);
+    }
+}
+
 void data_free(t_init *data)
 {
 	int i;
@@ -19,6 +34,8 @@ void data_free(t_init *data)
 	}
 	if (data->champs != NULL)
 	    free(data->champs);
+	if (data->cursors != NULL)
+	    ft_curdel(data->cursors);
 	free(data);
 }
 
