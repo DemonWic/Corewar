@@ -1,60 +1,41 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Makefile                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahintz <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 15:25:50 by ahintz            #+#    #+#             */
-/*   Updated: 2021/01/23 15:25:52 by ahintz           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bsausage <bsausage@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/07/22 03:38:06 by loram             #+#    #+#              #
+#    Updated: 2021/01/19 12:44:40 by bsausage         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-
-
-ASM_NAME = asm
-COREWAR_NAME = corewar
-
+ASM := asm
+CW := corewar
+ASM_DIR := asm_dir
+CW_DIR := corewar_dir
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -O3
 
+all: $(ASM) $(CW)
 
-ASM_LIBRARIES =
-ASM_INCLUDES = \
-	-I$(HEADERS_DIRECTORY)\
-	-I$(LIBFT_HEADERS_COREWAR)\
+$(ASM):
+	@make -C $(ASM_DIR)
+	@mv $(ASM_DIR)/$(ASM) .
 
-COREWAR_LIBRARIES = -lncurses
-COREWAR_INCLUDES = \
-	-I$(HEADERS_DIRECTORY)\
-	-I$(LIBFT_HEADERS_ASM)\
+$(CW):
+	@make -C $(CW_DIR)
+	@mv $(CW_DIR)/$(CW) .
 
+clean:
+	@make -C $(ASM_DIR) clean
+	@make -C $(CW_DIR) clean
 
+fclean:
+	@make -C $(ASM_DIR) fclean
+	@make -C $(CW_DIR) fclean
+	@rm -f $(ASM)
+	@rm -f $(CW)
 
-LIBFT_COREWAR = $(LIBFT_DIRECTORY_COREWAR)libft.a
-LIBFT_DIRECTORY_COREWAR = ./libft/corewar/
-LIBFT_HEADERS_COREWAR = $(LIBFT_DIRECTORY_COREWAR)includes/
+re: fclean all
 
-
-# Headers
-
-HEADERS_DIRECTORY = ./includes/
-
-# asm
-
-ASM_HEADERS_LIST = \
-	op.h\
-	asm.h\
-	asm_error.h\
-	asm_asm.h\
-	asm_disasm.h
-ASM_HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(ASM_HEADERS_LIST))
-
-# corewar
-
-COREWAR_HEADERS_LIST = \
-	op.h\
-	corewar.h\
-	corewar_error.h\
-	corewar_vs.h
-COREWAR_HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(COREWAR_HEADERS_LIST))
+.PHONY: all clean fclean re
