@@ -12,8 +12,8 @@
 
 ASM := asm
 CW := corewar
-ASM_DIR := asm_dir
-CW_DIR := corewar_dir
+ASM_DIR := asm_dir/
+CW_DIR := corewar_dir/
 CC = gcc
 
 all: $(ASM) $(CW)

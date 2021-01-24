@@ -98,9 +98,9 @@ int			op_live(t_cursor *cursor, t_init *data)
 	if (arg1 >= 1 && arg1 <= data->pl_count)
 	{
 		data->live_player = arg1;
+		data->champs[data->live_player - 1]->visio_last_live = data->cycle;
 	}
 	cursor->position = cor_addr(cursor->position);
 	cursor->pc = cursor->position;
-	data->champs[data->live_player - 1]->visio_last_live = data->cycle;
 	return (0);
 }
